@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 1</title>
+</head>
+<body>
+    <input type="text" id="vetorSoma" placeholder="Digite os números separados por virgula">
+    <button onclick="calcularSoma()">Calcular Soma</button>
+    <p id="resultadoSoma"></p>
+
+    <script>
+        function calcularSoma() {
+        const vetor = document.getElementById("vetorSoma").value.split(",").map(Number);
+        let soma = 0;
+        for (let i = 0; i < vetor.length; i++) {
+            soma += vetor[i];
+        }
+        document.getElementById("resultadoSoma").innerHTML = "Soma: " + soma;
+    }
+    </script>
+</body>
+</html>

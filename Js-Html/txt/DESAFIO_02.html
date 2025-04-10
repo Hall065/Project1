@@ -1,0 +1,69 @@
+<!-- 2. ATIVIDADE 2 - MECÂNICA DO ZÉ
+O programa que irá criar deverá apresentar as opções de
+serviços oferecidos por um menu. A partir da escolha do serviço,
+ao encerrar deverá apresentar um resumo com serviço realizado
+com o nome do cliente e valor total final. -->
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mecânica do Zé</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <style>
+    #resumo {
+    margin-top: 20px;
+    padding: 10px;
+    background: transparent; 
+    color: black; 
+    border-radius: 5px;
+}
+
+    </style>
+
+
+    <div class="container">
+        <h1>Mecânica do Zé</h1>
+        <label for="nomeCliente">Nome do Cliente:</label>
+        <input type="text" id="nomeCliente" placeholder="Digite seu nome">
+
+        <label for="servico">Escolha um serviço:</label>
+        <select id="servico">
+            <option value="" disabled selected>Selecione...</option>
+            <option value="Troca de Óleo - R$ 100">Troca de Óleo - R$ 100</option>
+            <option value="Alinhamento - R$ 80">Alinhamento - R$ 80</option>
+            <option value="Balanceamento - R$ 90">Balanceamento - R$ 90</option>
+            <option value="Revisão Completa - R$ 250">Revisão Completa - R$ 250</option>
+        </select>
+
+        <button onclick="finalizarServico()">Finalizar Serviço</button>
+
+        <div id="resumo" class="hidden">
+            <h2>Resumo do Serviço</h2>
+            <p id="detalhes"></p>
+        </div>
+    </div>
+    <script>
+
+        function finalizarServico() {
+    const nome = document.getElementById("nomeCliente").value;
+    const servico = document.getElementById("servico").value;
+    const resumo = document.getElementById("resumo");
+    const detalhes = document.getElementById("detalhes");
+
+    if (!nome || !servico) {
+        alert("Por favor, preencha seu nome e escolha um serviço.");
+        return;
+    }
+
+    detalhes.innerHTML = `<strong>Cliente:</strong> ${nome} <br> <strong>Serviço:</strong> ${servico}`;
+    resumo.classList.remove("hidden");
+}
+
+    </script>
+</body>
+</html>

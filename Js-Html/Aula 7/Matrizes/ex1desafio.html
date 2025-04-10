@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrizes 2 - Exemplo</title>
+</head>
+<body>
+    <input type="text" id="matrizSomaElementos" placeholder="Digite 4 números separados por vírgula (2x2)">
+    <button onclick="somarElementosMatriz()">Somar Elementos</button>
+    <p id="resultadoSomarElementos"></p>
+
+    <script>
+        function somarElementosMatriz(){
+            const vetor = document.getElementById("matrizSomaElementos").value.split(",").map(Number);
+            let soma = 0;
+            for (let i = 0; i < vetor.length; i++) {
+                soma += vetor[i];  
+            }
+            document.getElementById("resultadoSomarElementos").innerHTML = "Soma: " + soma;
+        }
+    </script>
+</body>
+</html>

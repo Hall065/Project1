@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contar Ímpares na Matriz</title>
+</head>
+<body>
+    <input type="text" id="vetorImpares" placeholder="Digite os números separados por vírgula">
+    <button onclick="contarImpares()">Contar Ímpares</button>
+    <p id="resultadoImpares"></p>
+
+    <script>
+        function contarImpares() {
+            const vetor = document.getElementById("vetorImpares").value.split(",").map(Number);
+            const matriz = [];
+
+            for (let i = 0; i < 3; i++) {
+                matriz[i] = vetor.slice(i * 3, (i + 1) * 3);
+            }
+
+            let contagemImpares = 0;
+
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    if (matriz[i][j] % 2 !== 0) {
+                        contagemImpares++;
+                    }
+                }
+            }
+
+            document.getElementById("resultadoImpares").innerHTML = "Quantidade de números ímpares: " + contagemImpares;
+        }
+    </script>
+</body>
+</html>

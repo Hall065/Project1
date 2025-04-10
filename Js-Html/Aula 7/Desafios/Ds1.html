@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média da Matriz</title>
+</head>
+<body>
+    <input type="text" id="vetorMedia" placeholder="Digite os números separados por vírgula">
+    <button onclick="calcularMedia()">Calcular Média</button>
+    <p id="resultadoMedia"></p>
+
+    <script>
+        function calcularMedia() {
+            const vetor = document.getElementById("vetorMedia").value.split(",").map(Number);
+            const matriz = [];
+
+            for (let i = 0; i < 3; i++) {
+                matriz[i] = vetor.slice(i * 3, (i + 1) * 3);
+            }
+
+            let soma = 0;
+            let totalElementos = 0;
+
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    soma += matriz[i][j];
+                    totalElementos++;
+                }
+            }
+
+            const media = soma / totalElementos;
+            document.getElementById("resultadoMedia").innerHTML = "Média: " + media;
+        }
+    </script>
+</body>
+</html>

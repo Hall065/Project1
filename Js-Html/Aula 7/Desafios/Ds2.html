@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Número Maior da Matriz</title>
+</head>
+<body>
+    <input type="text" id="vetorMaior" placeholder="Digite os números separados por vírgula">
+    <button onclick="encontrarMaior()">Encontrar Maior</button>
+    <p id="resultadoMaior"></p>
+
+    <script>
+        function encontrarMaior() {
+            const vetor = document.getElementById("vetorMaior").value.split(",").map(Number);
+            const matriz = [];
+
+            for (let i = 0; i < 3; i++) {
+                matriz[i] = vetor.slice(i * 3, (i + 1) * 3);
+            }
+
+            let maior = matriz[0][0];
+
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    if (matriz[i][j] > maior) {
+                        maior = matriz[i][j];
+                    }
+                }
+            }
+
+            document.getElementById("resultadoMaior").innerHTML = "Maior número: " + maior;
+        }
+    </script>
+</body>
+</html>

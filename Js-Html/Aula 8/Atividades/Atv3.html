@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Brinquedos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .produto {
+            margin: 10px;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .desconto {
+            font-style: italic;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Loja de Brinquedos</h1>
+
+    <div id="estoque">
+        <!-- Produtos da loja com código e preço -->
+        <div class="produto">
+            <h3>Produto 1</h3>
+            <p>Código: 1</p>
+            <p>Preço: R$ 30,00</p>
+            <button onclick="adicionarProduto(1, 30)">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="produto">
+            <h3>Produto 2</h3>
+            <p>Código: 2</p>
+            <p>Preço: R$ 15,00</p>
+            <button onclick="adicionarProduto(2, 15)">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="produto">
+            <h3>Produto 3</h3>
+            <p>Código: 3</p>
+            <p>Preço: R$ 20,00</p>
+            <button onclick="adicionarProduto(3, 20)">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="produto">
+            <h3>Produto 10</h3>
+            <p>Código: 10</p>
+            <p>Preço: R$ 50,00</p>
+            <button onclick="adicionarProduto(10, 50)">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+
+    <div id="resultado">
+        <h2>Carrinho:</h2>
+        <p id="itens-carrinho"></p>
+        <p id="total-compra"></p>
+    </div>
+
+    <script>
+        let carrinho = [];
+        
+        // Adicionar o produto ao carrinho
+        function adicionarProduto(codigo, preco) {
+            let aumento = 0;
+            let descontoText = "";
+
+            // 10% de aumento nos produtos de código 1 e 10
+            if (codigo === 1 || codigo === 10) {
+                aumento = preco * 0.10;
+                preco += aumento;
+                descontoText = `(Desconto de 10%)`;
+            }
+
+            carrinho.push({codigo, preco, descontoText});
+
+            // Atualiza a exibição do carrinho
+            exibirCarrinho();
+        }
+
+        // Exibir os itens do carrinho e o total
+        function exibirCarrinho() {
+            let itensHTML = '';
+            let totalCompra = 0;
+
+            carrinho.forEach(item => {
+                if (item.descontoText) {
+                    // Produto com o texto de desconto
+                    itensHTML += `Produto Código ${item.codigo}: R$ ${item.preco.toFixed(2)} <span class="desconto">${item.descontoText}</span><br>`;
+                } else {
+                    // Produto sem desconto
+                    itensHTML += `Produto Código ${item.codigo}: R$ ${item.preco.toFixed(2)}<br>`;
+                }
+                totalCompra += item.preco;
+            });
+
+            document.getElementById('itens-carrinho').innerHTML = itensHTML;
+            document.getElementById('total-compra').textContent = `Total da Compra: R$ ${totalCompra.toFixed(2)}`;
+        }
+    </script>
+
+</body>
+</html>

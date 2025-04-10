@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Leitura Feliz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        select, input {
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Biblioteca Leitura Feliz</h1>
+        <label for="tipoUsuario">Selecione seu tipo de usuário:</label>
+        <select id="tipoUsuario">
+            <option value="estudante">Estudante</option>
+            <option value="professor">Professor</option>
+            <option value="visitante">Visitante</option>
+        </select>
+
+        <label for="quantidadeLivros">Quantos livros deseja pegar emprestado?</label>
+        <input type="number" id="quantidadeLivros" min="1" max="5">
+
+        <button onclick="verificarEmprestimo()">Verificar Empréstimo</button>
+
+        <div class="resultado" id="resultado"></div>
+    </div>
+
+    <script>
+        function verificarEmprestimo() {
+            const tipoUsuario = document.getElementById('tipoUsuario').value;
+            const quantidadeLivros = parseInt(document.getElementById('quantidadeLivros').value);
+            let mensagem = '';
+
+            if (tipoUsuario === 'estudante') {
+                if (quantidadeLivros <= 3) {
+                    mensagem = `Empréstimo permitido! Você pode pegar até 3 livros.`;
+                } else {
+                    mensagem = `Empréstimo não permitido! Estudantes podem pegar até 3 livros.`;
+                }
+            } else if (tipoUsuario === 'professor') {
+                if (quantidadeLivros <= 5) {
+                    mensagem = `Empréstimo permitido! Você pode pegar até 5 livros.`;
+                } else {
+                    mensagem = `Empréstimo não permitido! Professores podem pegar até 5 livros.`;
+                }
+            } else if (tipoUsuario === 'visitante') {
+                if (quantidadeLivros === 1) {
+                    mensagem = `Empréstimo permitido! Visitantes podem pegar apenas 1 livro.`;
+                } else {
+                    mensagem = `Empréstimo não permitido! Visitantes podem pegar apenas 1 livro.`;
+                }
+            }
+
+            document.getElementById('resultado').textContent = mensagem;
+        }
+    </script>
+
+</body>
+</html>

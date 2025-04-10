@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrizes 4x4 - Exemplo</title>
+</head>
+<body>
+    <input type="text" id="matrizSomaDiagonais" placeholder="Digite 16 números separados por vírgula (4x4)">
+    <button onclick="somarDiagonaisMatriz()">Somar Diagonais</button>
+    <p id="resultadoSomaDiagonais"></p>
+
+    <script>
+        function somarDiagonaisMatriz() {
+            const vetor = document.getElementById("matrizSomaDiagonais").value.split(",").map(Number);
+            const matriz = [];
+            
+            for (let i = 0; i < 4; i++) {
+                matriz[i] = vetor.slice(i * 4, (i + 1) * 4);
+            }
+
+            let somaPrincipal = 0;
+            let somaSecundaria = 0;
+
+            for (let i = 0; i < 4; i++) {
+                somaPrincipal += matriz[i][i];
+                somaSecundaria += matriz[i][3 - i];
+            }
+
+            const resultado = "Diagonal Principal: " + somaPrincipal + "<br>" +
+                              "Diagonal Secundária: " + somaSecundaria;
+
+            document.getElementById("resultadoSomaDiagonais").innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>

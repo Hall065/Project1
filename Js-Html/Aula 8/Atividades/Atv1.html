@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Expresso - Escolha seu Pedido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .menu {
+            margin-bottom: 20px;
+        }
+        .resultado {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bem-vindo ao Café Expresso!</h1>
+    <div class="menu">
+        <h2>Escolha um item:</h2>
+        <button onclick="adicionarItem('Café Expresso', 5.00)">Café Expresso - R$ 5,00</button>
+        <button onclick="adicionarItem('Cappuccino', 8.00)">Cappuccino - R$ 8,00</button>
+        <button onclick="adicionarItem('Chocolate Quente', 7.50)">Chocolate Quente - R$ 7,50</button>
+        <button onclick="adicionarItem('Chá', 4.00)">Chá - R$ 4,00</button>
+    </div>
+
+    <div class="resultado" id="resultado">
+        <h3>Seu pedido:</h3>
+        <pre id="itensCompra"></pre>
+        <h3>Total: R$ <span id="totalCompra">0.00</span></h3>
+        <button onclick="finalizarPedido()">Finalizar Pedido</button>
+    </div>
+
+    <script>
+        let totalCompra = 0;
+        let itensCompra = '';  
+
+        function adicionarItem(nomeProduto, valorProduto) {
+            totalCompra += valorProduto;
+            itensCompra += `Produto: ${nomeProduto} - R$ ${valorProduto.toFixed(2)}\n`;
+
+            // Atualiza a lista de itens e o valor total na tela
+            document.getElementById('itensCompra').textContent = itensCompra;
+            document.getElementById('totalCompra').textContent = totalCompra.toFixed(2);
+        }
+
+        function finalizarPedido() {
+            let mensagemFinal = `*** NOTA FISCAL ***\n\n${itensCompra}\nTotal: R$ ${totalCompra.toFixed(2)}`;
+            alert(mensagemFinal);
+
+            // Limpa o pedido após finalizar
+            totalCompra = 0;
+            itensCompra = '';
+            document.getElementById('itensCompra').textContent = '';
+            document.getElementById('totalCompra').textContent = '0.00';
+        }
+    </script>
+
+</body>
+</html>

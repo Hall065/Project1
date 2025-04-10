@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 2 - Vetor</title>
+</head>
+<body>
+    <input type="text" id="vetorSoma" placeholder="Digite os números separados por vírgula">
+    <button onclick="encontrarMaiorValor()">Maior e Menor</button>
+    <p id="resultadoMaiorMenor"></p>
+
+    <script>
+        function encontrarMaiorValor() {
+            const vetor = document.getElementById("vetorSoma").value.split(",").map(Number);
+            let maior = vetor[0];
+            let menor = vetor[0];
+            for (let i = 1; i < vetor.length; i++) {
+                if (vetor[i] > maior) {
+                    maior = vetor[i];
+                }
+                if (vetor[i] < menor) {
+                    menor = vetor[i];
+                }
+            }
+            document.getElementById("resultadoMaiorMenor").innerHTML = "Maior: " + maior + ", Menor: " + menor;
+        }
+    </script>
+</body>
+</html>

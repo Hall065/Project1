@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .produto {
+            margin: 10px;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Controle de Estoque de Produtos</h1>
+
+    <div id="estoque">
+        <!-- Produtos renomeados -->
+        <div class="produto">
+            <h3>Produto 1</h3>
+            <p>Quantidade no estoque: <span id="qtd-produto1">50</span></p>
+            <button onclick="verificarEstoque('Produto 1', 50)">Verificar Estoque</button>
+        </div>
+
+        <div class="produto">
+            <h3>Produto 2</h3>
+            <p>Quantidade no estoque: <span id="qtd-produto2">25</span></p>
+            <button onclick="verificarEstoque('Produto 2', 25)">Verificar Estoque</button>
+        </div>
+
+        <div class="produto">
+            <h3>Produto 3</h3>
+            <p>Quantidade no estoque: <span id="qtd-produto3">120</span></p>
+            <button onclick="verificarEstoque('Produto 3', 120)">Verificar Estoque</button>
+        </div>
+
+        <div class="produto">
+            <h3>Produto 4</h3>
+            <p>Quantidade no estoque: <span id="qtd-produto4">15</span></p>
+            <button onclick="verificarEstoque('Produto 4', 15)">Verificar Estoque</button>
+        </div>
+    </div>
+
+    <div id="resultado">
+        <h2>Resultado:</h2>
+        <p id="mensagem"></p>
+    </div>
+
+    <script>
+        function verificarEstoque(nomeProduto, quantidade) {
+            let mensagem;
+            if (quantidade < 30) {
+                mensagem = `${nomeProduto}: Estoque Baixo`;
+            } else if (quantidade > 100) {
+                mensagem = `${nomeProduto}: Estoque Bom`;
+            } else {
+                mensagem = `${nomeProduto}: Estoque Médio`;
+            }
+
+            // Exibe o resultado
+            document.getElementById('mensagem').textContent = mensagem;
+        }
+    </script>
+
+</body>
+</html>

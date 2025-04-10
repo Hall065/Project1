@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mecânica do Zé</title>
+    <link rel="stylesheet" href="Atv2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mecânica do Zé</h1>
+        <label for="nomeCliente">Nome do Cliente:</label>
+        <input type="text" id="nomeCliente" placeholder="Digite seu nome">
+
+        <label for="servico">Escolha um serviço:</label>
+        <select id="servico">
+            <option value="" disabled selected>Selecione...</option>
+            <option value="Troca de Óleo - R$ 100">Troca de Óleo - R$ 100</option>
+            <option value="Alinhamento - R$ 80">Alinhamento - R$ 80</option>
+            <option value="Balanceamento - R$ 90">Balanceamento - R$ 90</option>
+            <option value="Revisão Completa - R$ 250">Revisão Completa - R$ 250</option>
+        </select>
+
+        <button onclick="finalizarServico()">Finalizar Serviço</button>
+
+        <div id="resumo" class="hidden">
+            <h2>Resumo do Serviço</h2>
+            <p id="detalhes"></p>
+        </div>
+    </div>
+    <script src="Atv2.js"></script>
+</body>
+</html>

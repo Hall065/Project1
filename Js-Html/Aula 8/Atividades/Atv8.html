@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Bom Sabor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #ff6347;
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .resultado {
+            font-size: 18px;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pizzaria Bom Sabor</h1>
+
+    <label for="pizza1">Escolha o tamanho da primeira pizza:</label>
+    <select id="pizza1">
+        <option value="pequena">Pequena</option>
+        <option value="media">Média</option>
+        <option value="grande">Grande</option>
+    </select>
+
+    <br>
+
+    <label for="pizza2">Escolha o tamanho da segunda pizza:</label>
+    <select id="pizza2">
+        <option value="pequena">Pequena</option>
+        <option value="media">Média</option>
+        <option value="grande">Grande</option>
+    </select>
+
+    <br>
+
+    <button onclick="verificarBrinde()">Fazer Pedido</button>
+
+    <div id="resultado" class="resultado"></div>
+
+    <script>
+        function verificarBrinde() {
+            const pizza1 = document.getElementById('pizza1').value;
+            const pizza2 = document.getElementById('pizza2').value;
+            let resultado = '';
+
+            if (pizza1 === 'grande' && pizza2 === 'grande') {
+                resultado = 'Você pediu duas pizzas grandes! Parabéns, você ganhou um refrigerante de 2 litros!';
+            } else if ((pizza1 === 'media' && pizza2 === 'pequena') || (pizza1 === 'pequena' && pizza2 === 'media')) {
+                resultado = 'Você pediu uma pizza média e uma pizza pequena! Parabéns, você ganhou uma porção de pão de alho!';
+            } else {
+                resultado = 'Seu pedido não se qualifica para brindes. Aproveite sua pizza!';
+            }
+
+            document.getElementById('resultado').innerHTML = resultado;
+        }
+    </script>
+
+</body>
+</html>

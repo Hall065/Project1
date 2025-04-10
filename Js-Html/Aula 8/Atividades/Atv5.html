@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastreamento de Pedido - Transportadora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .resultado {
+            font-size: 18px;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Rastreamento de Pedido - Transportadora LOGI MAIS</h1>
+
+    <label for="sigla">Digite a sigla do pedido:</label>
+    <input type="text" id="sigla" placeholder="Ex: AB, CD, EF">
+    <button onclick="rastrearPedido()">Rastrear</button>
+
+    <div id="resultado" class="resultado"></div>
+
+    <script>
+        function rastrearPedido() {
+            const siglas = {
+                'AB': 'SP',
+                'CD': 'RJ',
+                'EF': 'MG'
+            };
+
+            const sigla = document.getElementById('sigla').value.toUpperCase();
+            const estado = siglas[sigla];
+
+            let resultado = '';
+            if (estado) {
+                resultado = `O pedido está localizado em: ${estado}.`;
+            } else {
+                resultado = 'Sigla inválida! Por favor, digite uma sigla válida (AB, CD, EF).';
+            }
+
+            document.getElementById('resultado').innerHTML = resultado;
+        }
+    </script>
+
+</body>
+</html>

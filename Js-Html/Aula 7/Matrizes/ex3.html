@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrizes 3 - Exemplo</title>
+</head>
+<body>
+    <input type="text" id="matrizSomaColunas" placeholder="Digite 9 números separados por vírgula (3x3)">
+    <button onclick="somarColunasMatriz()">Somar Colunas</button>
+    <p id="resultadoSomaColunas"></p>
+
+    <script>
+        function somarColunasMatriz() {
+            const vetor = document.getElementById("matrizSomaColunas").value.split(",").map(Number);
+            const matriz = [];
+            for (let i = 0; i < 3; i++) {
+                matriz[i] = vetor.slice(i * 3, (i + 1) * 3);
+            }
+            let resultado = "";
+            for (let j = 0; j < 3; j++) {
+                let soma = 0;
+                for (let i = 0; i < 3; i++) {
+                    soma += matriz[i][j];
+                }
+                resultado += "Coluna " + (j + 1) + ": " + soma + "<br>";
+            }
+            document.getElementById("resultadoSomaColunas").innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>
