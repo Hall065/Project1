@@ -48,3 +48,17 @@ function buscarLivro() {
     );
     atualizarLista(resultados);
 }
+
+function buscarLivroParaAlterar() {
+    const busca = document.getElementById("busca-alterar").value.toLowerCase();
+    livroParaAlterar = biblioteca.find((livro) =>
+        livro.titulo.toLowerCase().includes(busca)
+);
+
+if(livroParaAlterar) {
+    document.getElementById("form-alterar").classList.remove("hidden");
+    document.getElementById("novo-titulo").value = livroParaAlterar.titulo;
+    document.getElementById("novo-autor").value = livroParaAlterar.autor;
+    document.getElementById("novo-ano").value = livroParaAlterar.ano;
+}
+}
