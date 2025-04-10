@@ -99,3 +99,12 @@ body {
   .icon {
     margin-right: 5px;
   }
+
+  #emprestimo select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Ubuntu', Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
