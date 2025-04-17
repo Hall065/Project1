@@ -4,7 +4,7 @@ function converter() {
     let resultado = document.getElementById("resultadoConversao");
   
     let taxaDolar = 5.81;
-    let taxaEuro = 6.59;
+    let taxaEuro = 6.60;
   
     let convertido;
   
