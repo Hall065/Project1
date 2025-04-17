@@ -8,7 +8,7 @@ function calcularArea() {
     switch (figura) {
       case "círculo":
       case "circulo":
-        area = Math.PI * dim1 * dim1; //  Pi * raio²
+        area = Math.PI * (dim1 * dim1); //  Pi * raio²
         resultado.innerHTML = `<p>Área do círculo: ${area.toFixed(2)} unidades²</p>`;
         break;
         
