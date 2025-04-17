@@ -27,4 +27,3 @@ function calcularArea() {
         resultado.innerHTML = "<p>Figura inválida. Tente: círculo, quadrado ou triângulo.</p>";
     }
   }
-  
