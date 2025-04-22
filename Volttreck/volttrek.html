@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Projeto TECNOTREK</title>
+    <link rel="stylesheet" href="volttrek.css">
+</head>
+<body>
+    <header>
+        <h1>Projeto TECNOTREK</h1>
+        <div class="logo-container">
+            <img src="https://github.com/LNJHiro/imagensVoltrek/blob/main/6ca041ff-dcfd-406d-882d-e569a3c5dfed.png?raw=true" alt="Logo TECNOTREK" class="logo" width="100" height="100">
+            <h1>Projeto TECNOTREK: Piso Piezoelétrico</h1>
+        </div>
+    </header>
+
+    <section class="intro">
+        <p>O projeto TECNOTREK transforma energia mecânica gerada por veículos em energia elétrica sustentável através de pisos piezoelétricos.</p>
+    </section>
+
+    <section class="imagem">
+        <h2>Esquema do Módulo</h2>
+        <img src="https://github.com/LNJHiro/imagensVoltrek/blob/main/82f128fb-d965-4abe-a41f-92bb9d07dfcb.jpg?raw=true" alt="Esquema do módulo piezoelétrico" width="400">
+    </section>
+
+    <section class="imagem">
+        <h2>Aplicação em Estradas</h2>
+        <img src="https://github.com/LNJHiro/imagensVoltrek/blob/main/25014bef-d575-4f3a-a59e-4320a6af39c2.jpg?raw=true" alt="Piso piezoelétrico em estrada" width="400">
+    </section>
+
+    <section class="info">
+        <h2>Como Funciona?</h2>
+        <ul>
+            <li>Módulo composto por camadas de borracha, asfalto, material piezoelétrico e concreto.</li>
+            <li>Veículos ao passarem geram compressão e essa pressão se transforma em energia elétrica.</li>
+            <li>Energia pode ser usada para iluminação pública, sensores de trânsito e outros sistemas urbanos.</li>
+        </ul>
+    </section>
+
+    <section class="detalhes">
+        <h2>Sobre o Produto</h2>
+        <p>O piso piezoelétrico TECNOTREK é uma solução inovadora de geração de energia limpa e renovável, projetada para ambientes urbanos de alto tráfego. Cada módulo é construído com camadas estratégicas de materiais como borracha, asfalto, compostos piezoelétricos e concreto, permitindo a conversão da energia mecânica (pressão dos veículos) em eletricidade.</p>
+
+        <h3>Componentes do Módulo</h3>
+        <ul>
+            <li><strong>Camada Superior:</strong> Revestimento de borracha resistente ao atrito e clima.</li>
+            <li><strong>Camada Piezoelétrica:</strong> Composta por materiais como PVDF ou PZT, responsáveis pela conversão energética.</li>
+            <li><strong>Camada de Distribuição:</strong> Estrutura condutora que canaliza a energia gerada.</li>
+            <li><strong>Base de Concreto:</strong> Suporte rígido que dá estabilidade ao sistema.</li>
+        </ul>
+
+        <h3>Funcionamento</h3>
+        <p>Quando veículos passam sobre os módulos, a pressão gerada deforma ligeiramente os cristais piezoelétricos no interior. Essa deformação induz uma diferença de potencial elétrico, que é captada e armazenada por sistemas de controle e baterias. A energia pode ser usada localmente, reduzindo custos de infraestrutura e contribuindo para cidades mais sustentáveis.</p>
+
+        <h3>Aplicações Reais</h3>
+        <ul>
+            <li>Iluminação pública autossustentável em rodovias e estacionamentos.</li>
+            <li>Alimentação de sensores e semáforos inteligentes.</li>
+            <li>Monitoramento de tráfego em tempo real com sensores integrados.</li>
+        </ul>
+    </section>
+
+    <section class="interativo">
+        <h2>Simule a Energia Gerada</h2>
+        <label for="veiculos">Veículos por hora:</label><br>
+        <input type="number" id="veiculos" min="0" placeholder="Ex: 1000"><br>
+        <button onclick="calcularEnergia()">Calcular</button>
+        <p id="resultado"></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 - Projeto TECNOTREK | Desenvolvimento de Sistemas Senai</p>
+    </footer>
+
+    <script src="volttrek.js"></script>
+</body>
+</html>
