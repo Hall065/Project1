@@ -110,3 +110,21 @@ button:hover {
   color: #333;
   text-align: center;
 }
+
+.link-secundario {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.link-secundario:hover {
+  text-decoration: underline;
+}
+
+.fora-da-caixa {
+  margin-top: 20px;
+  margin-left: 360px; /* ajusta esse valor como quiser */
+  text-align: left;
+}
