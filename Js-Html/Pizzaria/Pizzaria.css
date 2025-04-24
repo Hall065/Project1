@@ -1,0 +1,70 @@
+body {
+  font-family: 'Sansita Swashed', cursive;
+  background-color: #D9C39D; /* Cor do fundo */
+  margin: 0;
+  padding: 0;
+}
+
+.faixa-vermelha {
+  background-color: #9F2C15; /* Cor da faixa */
+  height: 60px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center; /* Alinha os itens verticalmente */
+  padding: 0 20px; /* Espaço à esquerda e à direita */
+}
+
+.logo {
+  width: 50px; /* Tamanho da Logo */
+  height: auto;
+  margin-right: 15px; /* Espaço entre a logo e o nome */
+}
+
+.nome-pizzaria {
+  color: white;
+  font-size: 24px;
+}
+
+.titulo-login {
+  font-size: 80px;
+  margin-left: 55px; /* Espaçamento da esquerda */
+  margin-top: 30px; /* Distância do topo */
+  color: #333;
+}
+
+.form-container {
+  margin-left: 55px;
+  margin-top: 30px;
+  width: 300px; /* Controla a largura dos inputs e do botão */
+}
+
+label {
+  font-size: 18px;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%; /* Faz os inputs ocuparem toda a largura disponível */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%; /* O botão vai ter o mesmo tamanho do input */
+  padding: 10px;
+  font-size: 16px;
+  background-color: #9F2C15;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #7f1e10; /* Cor ao passar o mouse */
+}
