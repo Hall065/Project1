@@ -27,8 +27,8 @@ body {
 
 .titulo-login {
   font-size: 80px;
-  margin-left: 55px; /* Espaçamento da esquerda */
-  margin-top: 30px; /* Distância do topo */
+  margin-left: 250px; /* Espaçamento da esquerda */
+  margin-top: 50px; /* Distância do topo */
   color: #333;
 }
 
@@ -55,7 +55,7 @@ input {
 }
 
 button {
-  width: 100%; /* O botão vai ter o mesmo tamanho do input */
+  width: 107%; /* O botão vai ter o mesmo tamanho do input */
   padding: 10px;
   font-size: 16px;
   background-color: #9F2C15;
@@ -68,3 +68,27 @@ button {
 button:hover {
   background-color: #7f1e10; /* Cor ao passar o mouse */
 }
+
+.img-pizza {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 200px; /* Ajusta o tamanho como preferir */
+}
+
+.conteudo-login {
+  display: flex;
+  align-items: center;
+  margin-left: 200px;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.img-pizza {
+  width: 500px; /* Ajuste o tamanho total da pizza */
+  height: auto; /* Mantém a proporção da imagem */
+  position: absolute;
+  right: 0px; /* Posiciona a imagem à direita da tela */
+  bottom: 30px; /* Ajuste a altura da imagem da parte inferior */
+}
+

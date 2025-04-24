@@ -15,7 +15,7 @@
     height: 70px;
     background-color: gray;
     border-radius: 50%;
-    transition: backgound-color 0.5s;
+    transition: background-color 0.5s;
 }
 
 .luz.vermelha {
@@ -34,9 +34,12 @@
     background-color: green;
 }
 
+.luz.azul {
+    background-color: blue;
+}
+
 .button {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
 }
-
