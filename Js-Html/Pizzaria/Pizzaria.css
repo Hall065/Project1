@@ -88,7 +88,25 @@ button:hover {
   width: 500px; /* Ajuste o tamanho total da pizza */
   height: auto; /* Mantém a proporção da imagem */
   position: absolute;
-  right: 0px; /* Posiciona a imagem à direita da tela */
+  right: -10px; /* Posiciona a imagem à direita da tela */
   bottom: 30px; /* Ajuste a altura da imagem da parte inferior */
 }
 
+.login-box {
+  background-color: whitesmoke;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 434px;
+  height: 310px;
+  margin-top: 80px;
+}
+
+.titulo-login {
+  font-size: 40px;
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
