@@ -25,4 +25,5 @@ const usuarios = [
     e.preventDefault();
     alert("Redirecionamento para página de cadastro em breve!");
   });
-  
+
+//texte
