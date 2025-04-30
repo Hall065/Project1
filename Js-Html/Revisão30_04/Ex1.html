@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Ex1.css">
+    <title>Atividade Signos</title>
+</head>
+<body>
+    <h1>Descubra seu Signo</h1>
+
+    Digite seu mês entre 1 e 12: <input type="number" id="signo" min="1" max="12"><br><br>
+    <button onclick="exibirSignos()">Ver Signos</button>
+    <p id="resultado"></p>
+
+    <script>
+        function exibirSignos() {
+            var mes = document.getElementById("signo").value;
+            var resultado = document.getElementById("resultado");
+
+            switch (parseInt(mes)) {
+                case 1:
+                    resultado.innerHTML = "Seu signo é Capricórnio ou Aquário.";
+                    break;
+                case 2:
+                    resultado.innerHTML = "Seu signo é Aquário ou Peixes.";
+                    break;
+                case 3:
+                    resultado.innerHTML = "Seu signo é Peixes ou Áries.";
+                    break;
+                case 4:
+                    resultado.innerHTML = "Seu signo é Áries ou Touro.";
+                    break;
+                case 5:
+                    resultado.innerHTML = "Seu signo é Touro ou Gêmeos.";
+                    break;
+                case 6:
+                    resultado.innerHTML = "Seu signo é Gêmeos ou Câncer.";
+                    break;
+                case 7:
+                    resultado.innerHTML = "Seu signo é Câncer ou Leão.";
+                    break;
+                case 8:
+                    resultado.innerHTML = "Seu signo é Leão ou Virgem.";
+                    break;
+                case 9:
+                    resultado.innerHTML = "Seu signo é Virgem ou Libra.";
+                    break;
+                case 10:
+                    resultado.innerHTML = "Seu signo é Libra ou Escorpião.";
+                    break;
+                case 11:
+                    resultado.innerHTML = "Seu signo é Escorpião ou Sagitário.";
+                    break;
+                case 12:
+                    resultado.innerHTML = "Seu signo é Sagitário ou Capricórnio.";
+                    break;
+                default:
+                    resultado.innerHTML = "Mês inválido. Por favor, insira um número entre 1 e 12.";
+            }
+        }
+    </script>
+</body>
+</html>
