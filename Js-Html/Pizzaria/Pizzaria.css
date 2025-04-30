@@ -116,11 +116,10 @@ button:hover {
   color: #333;
   text-align: center;
   margin-top: 10px;
-  cursor: pointer;
 }
 
 .link-secundario:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .fora-da-caixa {

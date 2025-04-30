@@ -10,9 +10,19 @@ const usuarios = [
     const usuarioValido = usuarios.find(user => user.email === email && user.senha === senha);
   
     if (usuarioValido) {
-      window.location.href = "pagina-inicial.html";
+      window.location.href = "paginaInicial.html";
     } else {
       alert("Email ou senha inválidos!");
     }
+  });
+  
+  document.getElementById("esqueci-senha").addEventListener("click", function (e) {
+    e.preventDefault();
+    alert("Função de recuperação de senha ainda não implementada!");
+  });
+  
+  document.getElementById("criar-conta").addEventListener("click", function (e) {
+    e.preventDefault();
+    alert("Redirecionamento para página de cadastro em breve!");
   });
   
