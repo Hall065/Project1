@@ -1,0 +1,81 @@
+/* Ex2.css */
+
+/* Estilizando o corpo */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    color: #4A90E2;
+}
+
+/* Centralizando a parte de selecionar */
+label, select, button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+}
+
+/* Estilizando o seletor */
+label {
+    font-size: 16px;
+    color: #333;
+}
+
+select {
+    padding: 8px;
+    font-size: 16px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilizando o botão */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4A90E2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Alterando cor do botão ao passar o mouse */
+button:hover {
+    background-color: #357ABD;
+}
+
+/* Estilizando a área da descrição */
+#descricao {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+}
+
+/* Estilos para dispositivos */
+strong {
+    color: #4A90E2;
+    font-weight: bold;
+}

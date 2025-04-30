@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descrição de Dispositivos</title>
+    <link rel="stylesheet" href="Ex2.css">
+</head>
+<body>
+    <h1>Escolha um Dispositivo</h1>
+    <label for="dispositivo">Selecione:</label>
+    <select id="dispositivo">
+        <option value="">-- Selecione --</option>
+        <option value="fitaCassete">Fita Cassete</option>
+        <option value="dvd">DVD</option>
+        <option value="cd">CD</option>
+    </select>
+    <button onclick="mostrarDescricao()">Mostrar Descrição</button>
+
+    <div id="descricao"></div>
+
+    <script>
+        function mostrarDescricao() {
+            const dispositivo = document.getElementById('dispositivo').value;
+            const descricao = document.getElementById('descricao');
+
+            switch (dispositivo) {
+                case 'fitaCassete':
+                    descricao.innerHTML = "<strong>Fita Cassete:</strong> Um dispositivo de armazenamento magnético usado principalmente para gravação e reprodução de áudio, popular entre as décadas de 1970 e 1990.";
+                    break;
+                case 'dvd':
+                    descricao.innerHTML = "<strong>DVD:</strong> Um disco óptico usado para armazenamento de dados, incluindo vídeos de alta qualidade, amplamente utilizado a partir dos anos 2000.";
+                    break;
+                case 'cd':
+                    descricao.innerHTML = "<strong>CD:</strong> Um disco óptico usado para armazenar dados digitais, especialmente música, popularizado nos anos 1980.";
+                    break;
+                default:
+                    descricao.innerHTML = "Por favor, selecione um dispositivo para ver a descrição.";
+            }
+        }
+    </script>
+</body>
+</html>
