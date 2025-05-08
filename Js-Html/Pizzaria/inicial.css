@@ -1,0 +1,169 @@
+body {
+    font-family: 'Sansita Swashed', cursive;
+    background-color: #D9C39D; /* Cor do fundo */
+    margin: 0;
+    padding: 0;
+  }
+
+  .faixa-vermelha {
+    background-color: #9F2C15;
+    height: 60px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* separa esquerda, meio e direita */
+    padding: 0 20px 0 10px;
+  }
+  
+  .esquerda {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nome-pizzaria {
+    color: white;
+    font-size: 24px;
+    margin-left: 10px;
+  }
+  
+  .meio {
+    display: flex;
+    gap: 20px;
+    margin-right: 100px;
+  }
+  
+  .direita {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Botão "Peça Agora" */
+  .order-btn {
+    font-family: 'Sansita Swashed', cursive;
+    background-color: #D9C39D;
+    color: #000000;
+    padding: 12px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+
+.logo {
+  width: 50px; /* Tamanho da Logo */
+  height: auto;
+  margin-left: 10px;
+  margin-right: 5px; /* Espaço entre a logo e o nome */
+}
+
+.nome-pizzaria {
+  color: white;
+  font-size: 24px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+nav a:hover,
+nav a.active {
+  background-color: #D9C39D;
+  color: #000000;
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 400px; /* ou mais, ajusta como quiser */
+  overflow: hidden;
+}
+
+.bg-cozinha {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.img-pizza {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  height: auto;
+}
+
+.hero-texto {
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    color: white;
+    z-index: 2;
+  }
+  
+  .hero-texto h1 {
+    font-size: 30px;
+    margin: 0 0 10px 0;
+    font-weight: normal;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  }
+  
+  .btn-cardapio {
+    background-color: #912e27;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: normal;
+    transition: 0.3s ease;
+    display: inline-block;
+  }
+  
+  .btn-cardapio:hover {
+    background-color: #b54234;
+  }
+
+  .faixa-inferior {
+  background-color: #9F2C15;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  margin-top: 0; /* garante que fique colada */
+}
+
+.combos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    justify-content: flex-start; /* Fica alinhado à esquerda */
+    width: 100%;
+  }
+  
+  .combo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold; /* deixa em negrito */
+  }
+  
+  .combo img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+  
+  .texto-esquerda {
+    flex: 1; /* Faz o texto "+ de 80 combinações" ocupar o máximo de espaço possível */
+    text-align: left;
+  }

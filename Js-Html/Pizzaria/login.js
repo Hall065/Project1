@@ -10,7 +10,7 @@ const usuarios = [
     const usuarioValido = usuarios.find(user => user.email === email && user.senha === senha);
   
     if (usuarioValido) {
-      window.location.href = "paginaInicial.html";
+      window.location.href = "inicial.html";
     } else {
       alert("Email ou senha inválidos!");
     }
