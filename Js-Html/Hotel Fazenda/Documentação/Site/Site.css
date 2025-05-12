@@ -1,0 +1,155 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definir a imagem de fundo para o site inteiro */
+body {
+    margin: 0; /* Remover margens padrão */
+    padding: 0; /* Remover preenchimento padrão */
+    background-image: url('Img/FzHtBackG.jpg'); /* Caminho para a imagem */
+    background-size: cover; /* Ajusta a imagem para cobrir toda a área */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* Imagem fixa ao rolar a página */
+    height: 100vh; /* Garante que o fundo cubra a altura total da tela */
+}
+
+/* Se necessário, adicionar sobreposição com transparência */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Sobreposição escura para melhorar a legibilidade */
+    z-index: -1; /* Coloca a sobreposição atrás do conteúdo */
+}
+
+/* Navbar fixa no topo com efeito de blur */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    padding: 20px 0; /* Aumenta a altura da barra */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(10px); /* Efeito de desfoque */
+    -webkit-backdrop-filter: blur(10px); /* Para compatibilidade com Safari */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Adiciona uma linha sutil na parte inferior */
+}
+
+header nav ul {
+    display: flex; /* Flexbox para alinhar os itens em linha */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    margin: 0 20px; /* Espaçamento entre os itens */
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #a4d04b; /* Cor do texto ao passar o mouse */
+}
+
+/* Seção Home */
+#home {
+    height: 100vh;
+    background: url('imagens/home.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: white;
+}
+#home .overlay {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    text-align: center;
+}
+#home h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+#home p {
+    font-size: 1.5rem;
+}
+
+/* Seções gerais */
+section {
+    padding: 60px 20px;
+    margin: 40px 0;
+}
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #2a7f44;
+}
+section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Seção de Reservas */
+#reservas form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+#reservas label {
+    margin: 10px 0 5px;
+    font-size: 1.2rem;
+}
+#reservas input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+#reservas button {
+    padding: 12px;
+    background-color: #2a7f44;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+}
+#reservas button:hover {
+    background-color: #21642c;
+}
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+    }
+    #home h1 {
+        font-size: 2.5rem;
+    }
+    #home p {
+        font-size: 1.2rem;
+    }
+}
