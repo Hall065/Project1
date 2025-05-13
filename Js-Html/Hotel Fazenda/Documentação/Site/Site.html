@@ -31,32 +31,80 @@
 
     <!-- Sobre nós -->
     <section id="sobre">
-        <h2>Sobre nós</h2>
-        <p>Nosso hotel oferece uma experiência única com conforto e contato direto com a natureza.</p>
+        <div class="caixa-conteudo">
+            <h2>Sobre Nós</h2>
+            <p>Somos um hotel fazenda acolhedor que oferece experiências únicas com a natureza...</p>
+        </div>
     </section>
 
-    <!-- Quartos -->
-    <section id="quartos">
+<!-- Quartos -->
+<section id="quartos">
+    <div class="caixa-conteudo">
         <h2>Quartos</h2>
         <p>Explore as diversas opções de quartos para sua estadia confortável.</p>
-    </section>
+
+        <div class="carrossel">
+            <div class="slides">
+                <img src="Img/quarto1.jpg" class="slide ativo">
+                <img src="Img/quarto2.jpg" class="slide">
+                <img src="Img/quarto3.jpg" class="slide">
+            </div>
+            <button class="anterior">&#10094;</button>
+            <button class="proximo">&#10095;</button>
+        </div>
+    </div>
+</section>
 
     <!-- Reservas -->
     <section id="reservas">
-        <h2>Faça sua reserva</h2>
-        <form action="#">
+    <div class="caixa-conteudo">
+        <h2>Faça sua Reserva</h2>
+        <form id="form-reserva">
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome">
+            <input type="text" id="nome" name="nome" required>
+
             <label for="data">Data:</label>
-            <input type="date" id="data" name="data">
-            <button type="submit">Reservar</button>
+            <input type="date" id="data" name="data" required>
+
+            <button type="submit" id="btn-reservar">Reservar</button>
         </form>
+
+        <!-- Mensagem de sucesso -->
+        <p id="mensagem-reserva" style="margin-top: 10px; font-weight: bold;"></p>
+    </div>
     </section>
+
+    <script>
+    document.getElementById("form-reserva").addEventListener("submit", function (event) {
+        event.preventDefault(); // Impede o comportamento padrão (recarregar a página)
+
+        const nome = document.getElementById("nome").value.trim();
+        const data = document.getElementById("data").value;
+
+        if (nome && data) {
+        const codigo = "RES-" + Math.floor(10000 + Math.random() * 90000);
+        const mensagem = `Reserva efetuada com sucesso! Código da reserva: ${codigo}`;
+        document.getElementById("mensagem-reserva").textContent = mensagem;
+        document.getElementById("mensagem-reserva").style.color = "green";
+        }
+    });
+    </script>
 
     <!-- Contato -->
     <section id="contato">
-        <h2>Contato</h2>
-        <p>Entre em contato conosco para mais informações.</p>
+        <div class="caixa-conteudo">
+            <h2>Contato</h2>
+            <p>Estamos prontos para te ajudar a planejar sua estadia perfeita!</p>
+            <p><strong>Telefone:</strong> (11) 91234-5678</p>
+            <p><strong>E-mail:</strong> contato@hotelfazenda.com</p>
+            <p><strong>Endereço:</strong> Estrada Rural, km 25 – Zona Verde, Interior-SP</p>
+            <p>Siga nossas redes sociais:</p>
+            <ul>
+                <p><strong>Instagram:</strong> @hotelfazenda</p>
+                <p><strong>Facebook:</strong> facebook.com/hotelfazenda</p>
+                <p><strong>WhatsApp:</strong> (11) 98765-4321</p>
+            </ul>
+        </div>
     </section>
 
     <!-- Rodapé -->
@@ -64,5 +112,6 @@
         <p>&copy; 2025 Hotel Fazenda - Todos os direitos reservados.</p>
     </footer>
 
+    <script src="Site.js"></script>
 </body>
 </html>

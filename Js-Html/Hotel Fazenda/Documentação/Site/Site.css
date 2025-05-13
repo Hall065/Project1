@@ -153,3 +153,91 @@ footer {
         font-size: 1.2rem;
     }
 }
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px;
+  min-height: 100vh;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+/* Estilo para a caixa de conteúdo (todas as seções) */
+.caixa-conteudo {
+    width: 80%; /* Ajuste a largura conforme necessário */
+    max-width: 500px; /* Largura máxima para não ficar muito grande em telas grandes */
+    margin: 0 auto; /* Para centralizar */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Se você quiser fundo branco com transparência */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.caixa-conteudo h2 {
+  margin-bottom: 20px;
+  font-size: 32px;
+  color: #333;
+}
+
+.caixa-conteudo p {
+  font-size: 18px;
+  color: #555;
+}
+
+.carrossel {
+  position: relative;
+  max-width: 600px;
+  margin: 30px auto 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.slides {
+  display: flex;
+}
+
+.slide {
+  min-width: 100%;
+  display: none;
+}
+
+.slide.ativo {
+  display: block;
+}
+
+.anterior,
+.proximo {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.anterior:hover,
+.proximo:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.anterior {
+  left: 10px;
+}
+
+.proximo {
+  right: 10px;
+}
+
+.carrossel img {
+  width: 100%;
+  height: auto;
+  max-height: 550px; /* ajuste de altura */
+  object-fit: cover;
+}
