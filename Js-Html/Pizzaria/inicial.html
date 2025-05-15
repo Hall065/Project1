@@ -7,35 +7,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-- Cabeçalho -->
     <div class="faixa-vermelha">
-        <div class="esquerda">
-          <img src="Logos/LogoBege.png" alt="Logo" class="logo">
-          <div class="nome-pizzaria">Pizzaria Monaco</div>
-        </div>
-
-        <nav class="meio">
-          <a class="active" href="#">Home</a>
-          <a href="#">Cardápio</a>
-          <a href="#">Sobre</a>
-          <a href="#">Contato</a>
-        </nav>
-        
-        <div class="direita">
-          <button class="order-btn">Peça Agora</button>
-        </div>
-
+      <div class="esquerda">
+        <img src="Logos/LogoBege.png" alt="Logo" class="logo">
+        <div class="nome-pizzaria">Pizzaria Monaco</div>
       </div>
 
+      <nav class="meio">
+        <a href="#" class="active">Home</a> <!-- ativo só o Home -->
+        <a href="cardapio.html">Cardápio</a> <!-- sem active -->
+        <a href="#">Sobre</a>
+        <a href="#">Contato</a>
+      </nav>
+      
+      <div class="direita">
+        <button id="btn-sair" class="btn-sair">Sair</button>
+      </div>
+    </div>
+
+      <!-- Fundo do Inicio da Página -->
       <div class="hero-section">
         <img src="Logos/FundoCozinha.jpg" alt="Cozinha" class="bg-cozinha">
         <img src="Logos/PizzaG.png" alt="Pizza" class="img-pizza">
 
         <div class="hero-texto">
             <h1>"A Verdadeira Pizza artesanal"</h1>
-            <a href="#cardapio" class="btn-cardapio">Ver Cardápio</a>
+            <button class="order-btn order-btn-vermelho" onclick="window.location.href='pedir.html'">Peça Agora</button>
           </div>
       </div>          
-    
+
+      <!-- Separação -->
       <div class="faixa-vermelha faixa-inferior">
         <div class="combos">
             <div class="combo texto-esquerda">
@@ -62,6 +65,31 @@
               <span>Doces</span>
             </div>
           </div>
+      </div>
+
+      <!-- Anúncios -->
+      <div class="promo-section">
+        <h2 class="titulo-promocoes">Promoções Especiais</h2>
+        <div class="promo-grid">
+          <div class="promo-card">
+            <img src="Logos/pizzagenerica.jpeg" alt="Pizza Margherita" class="promo-img">
+            <h3>Pizza Margherita</h3>
+            <p>Molho de tomate, mussarela e manjericão fresco.</p>
+            <button class="promo-btn">Peça Agora</button>
+          </div>
+          <div class="promo-card">
+            <img src="Logos/pizzagenerica.jpeg" alt="Pizza Calabresa" class="promo-img">
+            <h3>Pizza Calabresa</h3>
+            <p>Calabresa fatiada, cebola e queijo extra.</p>
+            <button class="promo-btn">Peça Agora</button>
+          </div>
+          <div class="promo-card">
+            <img src="Logos/pizzagenerica.jpeg" alt="Pizza Vegetariana" class="promo-img">
+            <h3>Pizza Vegetariana</h3>
+            <p>Mix de vegetais frescos com queijo artesanal.</p>
+            <button class="promo-btn">Peça Agora</button>
+          </div>
+        </div>
       </div>
     <script src="inicial.js"></script>
 </body>

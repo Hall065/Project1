@@ -50,57 +50,57 @@ body {
     cursor: pointer;
   }
 
-.logo {
-  width: 50px; /* Tamanho da Logo */
-  height: auto;
-  margin-left: 10px;
-  margin-right: 5px; /* Espaço entre a logo e o nome */
-}
+  .logo {
+    width: 50px; /* Tamanho da Logo */
+    height: auto;
+    margin-left: 10px;
+    margin-right: 5px; /* Espaço entre a logo e o nome */
+  }
 
-.nome-pizzaria {
-  color: white;
-  font-size: 24px;
-}
+  .nome-pizzaria {
+    color: white;
+    font-size: 24px;
+  }
 
-nav a {
-  color: #ffffff;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 20px;
-}
+  nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 20px;
+  }
 
-nav a:hover,
-nav a.active {
-  background-color: #D9C39D;
-  color: #000000;
-}
+  nav a:hover,
+  nav a.active {
+    background-color: #D9C39D;
+    color: #000000;
+  }
 
-.hero-section {
-  position: relative;
-  width: 100%;
-  height: 400px; /* ou mais, ajusta como quiser */
-  overflow: hidden;
-}
+  .hero-section {
+    position: relative;
+    width: 100%;
+    height: 400px; /* ou mais, ajusta como quiser */
+    overflow: hidden;
+  }
 
-.bg-cozinha {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+  .bg-cozinha {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
-.img-pizza {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 400px;
-  height: auto;
-}
+  .img-pizza {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    height: auto;
+  }
 
-.hero-texto {
+  .hero-texto {
     position: absolute;
     top: 50px;
     left: 30px;
@@ -131,15 +131,15 @@ nav a.active {
   }
 
   .faixa-inferior {
-  background-color: #9F2C15;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  margin-top: 0; /* garante que fique colada */
-}
+    background-color: #9F2C15;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 0; /* garante que fique colada */
+  }
 
-.combos {
+  .combos {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
@@ -166,4 +166,122 @@ nav a.active {
   .texto-esquerda {
     flex: 1; /* Faz o texto "+ de 80 combinações" ocupar o máximo de espaço possível */
     text-align: left;
+  }
+
+  .esquerda {
+  gap: 15px; /* adiciona espaço entre sair, logo e nome */
+  }
+
+  .btn-sair {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-family: 'Sansita Swashed', cursive;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .btn-sair:hover {
+    background-color: white;
+    color: #9F2C15;
+  }
+
+  /* Anuncios */
+  .promo-section {
+    background-color: #D9C39D; /* branco clarinho */
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .promo-section h2 {
+    font-family: 'Sansita Swashed', cursive;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #9F2C15; /* vermelho da marca */
+  }
+
+  .promo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .promo-card {
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .promo-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .promo-img {
+    width: 180px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
+
+  .promo-card h3 {
+    font-family: 'Sansita Swashed', cursive;
+    font-size: 24px;
+    color: #9F2C15;
+    margin: 0 0 10px 0;
+  }
+
+  .promo-card p {
+    font-size: 16px;
+    color: #444;
+    margin: 0 0 20px 0;
+    text-align: center;
+    flex-grow: 1;
+  }
+
+  .promo-btn {
+    font-family: 'Sansita Swashed', cursive;
+    background-color: #D9C39D;
+    color: #000000;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 100%;
+    max-width: 180px;
+  }
+
+  .promo-btn:hover {
+    background-color: #bfa56a;
+  }
+
+  .titulo-promocoes {
+    text-align: center;
+    font-size: 28px;
+    color: #9F2C15;
+    margin-top: -20px; /* Sobe o texto */
+  }
+
+  .order-btn-vermelho {
+    background-color: #9F2C15; /* vermelho escuro */
+    color: white;
+    border: none;
+  }
+
+  .order-btn-vermelho:hover {
+    background-color: #b54234; /* vermelho um pouco mais claro no hover */
+    color: white;
   }

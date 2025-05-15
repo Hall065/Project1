@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="adm.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="faixa-vermelha">
+        <div class="logo-nome">
+            <img src="Logos/LogoBege.png" alt="Logo" class="logo">
+            <span class="nome-pizzaria">Pizzaria Monaco</span>
+        </div>
+        <button class="btn-voltar" onclick="voltarLogin()">Sair</button>
+    </div>
+
+
+    <div class="container">
+        <h1>Página Administração Pizzaria Monaco</h1>
+        <div class="menu">
+            <button onclick="mostrarSecao('adicionar')">
+                <i class="fas fa-book-medical icon"></i>Adicionar Pizza
+              </button>
+              <button onclick="mostrarSecao('consultar')">
+                <i class="fas fa-search icon"></i>Consultar Pizzas
+              </button>
+              <button onclick="mostrarSecao('alterar')">
+                <i class="fas fa-edit icon"></i>Alterar Pizzas
+              </button>
+              <button onclick="mostrarSecao('venda')">
+                <i class="fas fa-shopping-cart icon"></i> Venda de Pizzas
+              </button>
+    
+              <button onclick="gerarRelatorioVendas()">
+                <i class="fa-solid fa-flag"></i> Relatório de Vendas
+              </button>
+        </div>
+        
+        <!-- Seção de Adicionar Pizzas -->
+        <div id="adicionar" class="hidden">
+            <h2>Cadastrar Pizza</h2>
+            <div class="form-group">
+                <label for="nome">Nome da Pizza:</label>
+                <input type="text" id="nome" placeholder="Digite o nome da pizza">
+            </div>
+            <div class="form-group">
+                <label for="conteudo">Descrição (Ingredientes):</label>
+                <input type="text" id="conteudo" placeholder="Digite o conteudo da pizza">
+            </div>
+            <div class="form-group">
+                <label for="categoria">Categoria da Pizza(Especial, Classica, Doce):</label>
+                <input type="text" id="categoria" placeholder="Digite a Categoria de Pizza">
+            </div>
+            <button onclick="adicionarPizza()">Adicionar Pizza</button>
+        </div>
+
+        <!-- Seção de Consultar Pizzas -->
+        <div id="consultar" class="hidden">
+        <h2>Consultar Pizzas Cadastradas</h2>
+        <input type="text" id="busca" placeholder="Buscar por Pizza" oninput="buscarPizza()">
+        <table>
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Conteúdo</th>
+                <th>Categoria</th>
+            </tr>
+            </thead>
+            <tbody id="lista-pizzas"></tbody>
+        </table>
+        </div>
+
+        <!-- Seção de Alteração -->
+        <div id="alterar" class="hidden">
+        <h2>Alterar Pizza</h2>
+        <input type="text" id="busca-alterar" placeholder="Buscar pizza para alterar" oninput="buscarPizzaParaAlterar()">
+        <div id="form-alterar" class="hidden">
+            <div class="form-group">
+            <label for="novo-nome">Novo Nome da Pizza</label>
+            <input type="text" id="novo-nome">
+            </div>
+            <div class="form-group">
+            <label for="novo-conteudo">Novo Conteúdo</label>
+            <input type="text" id="novo-conteudo">
+            </div>
+            <div class="form-group">
+            <label for="nova-categoria">Nova Categoria</label>
+            <input type="text" id="nova-categoria">
+            </div>
+            <button onclick="alterarPizza()">Salvar Alterações</button>
+        </div>
+        </div>
+
+        <!-- Seção de Venda -->
+        <div id="venda" class="hidden">
+        <h2>Venda de Pizzas</h2>
+        <div class="form-group">
+            <label for="venda-nome">Nome da Pizza:</label>
+            <input type="text" id="venda-nome" placeholder="Digite o nome da pizza">
+        </div>
+        <div class="form-group">
+            <label for="venda-preco">Preço:</label>
+            <input type="number" id="venda-preco" placeholder="Digite o preço da pizza">
+        </div>
+        <div class="form-group">
+            <label for="venda-comprador">Nome do Comprador:</label>
+            <input type="text" id="venda-comprador" placeholder="Digite o nome do comprador">
+        </div>
+        <button onclick="registrarVenda()">Registrar Venda</button>
+        <h3>Pizzas Vendidas</h3>
+        <ul id="lista-vendas"></ul>
+        </div>
+
+        <!-- Relatório de Vendas -->
+        <div id="relatorio-vendas" class="hidden">
+        <h3>Relatório de Vendas</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Pizza</th>
+                <th>Preço</th>
+                <th>Comprador</th>
+            </tr>
+            </thead>
+            <tbody id="tabela-relatorio-vendas"></tbody>
+        </table>
+        </div>
+    </div>
+    <script src="adm.js"></script>
+</body>
+</html>

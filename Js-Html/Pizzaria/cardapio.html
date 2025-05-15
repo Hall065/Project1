@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio - Pizzaria Monaco</title>
+  <link rel="stylesheet" href="cardapio.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <div class="faixa-vermelha">
+    <div class="esquerda">
+      <img src="Logos/LogoBege.png" alt="Logo" class="logo">
+      <div class="nome-pizzaria">Monaco</div>
+    </div>
+    <nav class="meio">
+      <a href="inicial.html">Home</a>
+      <a class="active" href="#">Cardápio</a>
+      <a href="#">Sobre</a>
+      <a href="#">Contato</a>
+    </nav>
+    <div class="direita">
+      <button class="order-btn">Peça Agora</button>
+    </div>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <main class="container-cardapio">
+    <section class="intro">
+      <h1 class="titulo-principal">Pizzas</h1>
+      <p class="descricao">
+        As melhores pizzas, feitas com ingredientes selecionados e assadas no ponto perfeito.
+        <br>Escolha a sua e aproveite!
+      </p>
+    </section>
+
+    <!-- Sessões informativas -->
+    <section class="categorias-info">
+      <div class="categoria-texto">
+        <h2>Pizzas Clássicas</h2>
+        <p>Os sabores tradicionais que todo mundo ama, preparados com receita autêntica e muito sabor!</p>
+          <img src="Logos/pizzagenerica.jpeg" class="pizzaDescricao">
+      </div>
+      <div class="categoria-texto">
+        <h2>Pizzas Especiais</h2>
+        <p>Combinações únicas e irresistíveis para quem quer sair do comum e experimentar novos sabores!</p>
+          <img src="Logos/pizzagenerica.jpeg" class="pizzaDescricao">
+      </div>
+    </section>
+
+    <!-- Cardápio -->
+    <section class="tabelas">
+      <div class="bloco">
+        <h3>Pizzas Clássicas</h3>
+        <ul>
+          <li>Margherita ........... R$ 35,90</li>
+          <li>Calabresa ............ R$ 37,90</li>
+          <li>Mussarela ............ R$ 34,90</li>
+          <li>Portuguesa ........... R$ 39,90</li>
+          <li>Napolitana ........... R$ 36,90</li>
+          <li>Baiana ............... R$ 38,90</li>
+          <li>Romana ............... R$ 34,90</li>
+          <li>Milho com Bacon ...... R$ 41,90</li>
+          <li>Atum Especial ........ R$ 42,90</li>
+          <li>Tomate Seco .......... R$ 43,90</li>
+        </ul>
+        <button class="order-btn order-btn-vermelho" onclick="window.location.href='pedir.html'">Peça Agora</button>
+      </div>
+
+      <div class="bloco">
+        <h3>Pizzas Especiais</h3>
+        <ul>
+          <li>Quatro Queijos ............... R$ 42,90</li>
+          <li>Pepperoni Premium ............ R$ 44,90</li>
+          <li>Brie com Damasco ............. R$ 46,90</li>
+          <li>Frango com Catupiry .......... R$ 41,90</li>
+          <li>Bacon Supreme ................ R$ 43,90</li>
+          <li>Gorgonzola e Tomate Seco ..... R$ 45,90</li>
+          <li>Camarão Especial ............. R$ 48,90</li>
+          <li>Parma com Figos .............. R$ 49,90</li>
+        </ul>
+        <button class="order-btn order-btn-vermelho" onclick="window.location.href='pedir.html'">Peça Agora</button>
+      </div>
+
+      <div class="bloco">
+        <h3>Entradas e Bordas</h3>
+        <ul>
+          <li>Catupiry ........... R$ 7,00</li>
+          <li>Cheddar ............ R$ 7,00</li>
+          <li>Cream Cheese ....... R$ 8,00</li>
+          <li>Gorgonzola ......... R$ 9,00</li>
+          <li>Chocolate .......... R$ 8,00</li>
+          <li>Provolone .......... R$ 8,00</li>
+          <li>Doce de Leite ...... R$ 10,00</li>
+          <li>Queijo Coalho ...... R$ 10,00</li>
+          <li>Alho e Ervas ....... R$ 8,50</li>
+        </ul>
+        <button class="order-btn order-btn-vermelho" onclick="window.location.href='pedir.html'">Peça Agora</button>
+      </div>
+
+      <div class="bloco">
+        <h3>Bebidas</h3>
+        <ul>
+          <li>Refrigerante lata ........... R$ 6,00</li>
+          <li>Refrigerante 2L ............. R$ 12,00</li>
+          <li>Água com gás ................ R$ 5,00</li>
+          <li>Água sem gás ................ R$ 4,00</li>
+          <li>Suco Natural ................ R$ 9,00</li>
+          <li>Vinho Taça .................. R$ 10,00</li>
+          <li>Vinho Garrafa ............... R$ 40,00</li>
+          <li>Energético .................. R$ 15,00</li>
+          <li>Cerveja lata ................ R$ 8,00</li>
+          <li>Milkshake ................... R$ 14,00</li>
+        </ul>
+        <button class="order-btn order-btn-vermelho" onclick="window.location.href='pedir.html'">Peça Agora</button>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
