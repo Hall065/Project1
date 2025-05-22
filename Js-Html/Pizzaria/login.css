@@ -91,7 +91,7 @@ button:hover {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   width: 434px;
-  height: 310px;
+  height: 325px;
   margin-top: 80px;
 }
 
@@ -105,6 +105,7 @@ button:hover {
 }
 
 .link-secundario {
+  text-align: down;
   font-size: 14px;
   color: #333;
   text-align: center;
@@ -119,4 +120,16 @@ button:hover {
   margin-top: 20px;
   margin-left: 360px;
   text-align: left;
+}
+
+.mensagem {
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    width: calc(100% - 40px);
+    /* Ajusta o tamanho para encaixar no container */
+    margin: 0 auto;
+    /* Centraliza a mensagem */
 }

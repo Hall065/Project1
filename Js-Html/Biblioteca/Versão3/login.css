@@ -1,0 +1,347 @@
+:root {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Estilo geral */
+/* Centraliza todos os textos do site */
+body {
+    font-family: 'Ubuntu', sans-serif;
+ 
+    background-size: cover;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    /* Centraliza todos os textos */
+}
+
+/* Centraliza o texto dentro do container */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(217, 40, 40, 0.9);
+    /* Fundo branco com transparência */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    /* Centraliza o texto dentro do container */
+}
+
+img {
+    width: 20%;
+    height: 30%;
+}
+/* Títulos */
+h1 {
+    text-align: center;
+    color: #e74c3c;
+    /* Vermelho tomate */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #e74c3c;
+    
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+h3 {
+    color: #e74c3c;
+   
+    margin-bottom: 10px;
+}
+
+/* Menu de navegação */
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.menu button {
+    background-color: #e74c3c;
+    /* Vermelho tomate */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu button:hover {
+    background-color: #e74c3c;
+    /* Vermelho mais escuro */
+}
+
+.menu button i {
+    margin-right: 5px;
+}
+
+/* Formulários */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: calc(50% - 20px);
+    /* Ajusta o tamanho para encaixar no container */
+    padding: 10px;
+    border: 2px solid #e74c3c;
+    /* Laranja queijo */
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #e74c3c;
+    /* Tom de massa de pizza */
+    color: #333;
+    /* Texto escuro */
+    text-align: center;
+    /* Centraliza o texto dentro do input */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    /* Garante que o input seja tratado como um bloco */
+    margin: 10px auto;
+    /* Centraliza o input no container */
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #e74c3c;
+    /* Vermelho tomate */
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+    /* Sombra ao focar */
+    outline: none;
+    /* Remove o contorno padrão */
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+    color: #aaa;
+    /* Cor do placeholder */
+    font-style: italic;
+    /* Estilo do texto do placeholder */
+    text-align: center;
+    /* Centraliza o texto do placeholder */
+}
+
+/* Botões dentro de formulários */
+button {
+    background-color: #e74c3c;
+    /* Verde manjericão */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e74c3c;
+    /* Verde mais escuro */
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #e74c3c;
+    /* Laranja queijo */
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Listas */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #fff8e1;
+    /* Tom de massa de pizza */
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Mensagens interativas */
+.mensagem {
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    width: calc(100% - 40px);
+    /* Ajusta o tamanho para encaixar no container */
+    margin: 0 auto;
+    /* Centraliza a mensagem */
+}
+
+.mensagem.sucesso {
+    background-color: #f3f4f3;
+    /* Verde claro */
+    color: #155724;
+    /* Verde escuro */
+    border: 1px solid #f3f4f3;
+}
+
+.mensagem.erro {
+    background-color: #e74c3c;
+    /* Vermelho claro */
+    color: #f0eeee;
+    /* Vermelho escuro */
+    border: 1px solid #e74c3c;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        width: 100%;
+        /* Ajusta inputs para dispositivos menores */
+    }
+
+    .mensagem {
+        width: 100%;
+        /* Ajusta mensagens para dispositivos menores */
+    }
+}
+
+
+
+/* Centraliza os títulos */
+h1,
+h2,
+h3 {
+    text-align: center;
+    /* Centraliza os títulos */
+}
+
+/* Centraliza o texto dentro das tabelas */
+table {
+    margin: 0 auto;
+    /* Centraliza a tabela no container */
+    text-align: center;
+    /* Centraliza o texto dentro da tabela */
+}
+
+th,
+td {
+    text-align: center;
+    /* Centraliza o texto nas células */
+}
+
+/* Centraliza os botões */
+.menu button {
+    display: inline-block;
+    /* Garante que os botões fiquem alinhados */
+    margin: 0 auto;
+    /* Centraliza os botões */
+}
+
+/* Centraliza o texto dentro dos inputs */
+input[type="text"],
+input[type="number"],
+select {
+    text-align: center;
+    /* Centraliza o texto dentro dos inputs */
+    margin: 10px auto;
+    /* Centraliza os inputs no container */
+}
+
+#login {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Fundo branco com transparência */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra leve */
+    text-align: center;
+}
+
+#login h1,
+#login h2 {
+    margin-bottom: 20px;
+}
+
+#login input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #e74c3c;
+    /* Laranja queijo */
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #fff8e1;
+    /* Tom de massa de pizza */
+    color: #333;
+    text-align: center;
+}
+
+#login button {
+    background-color: #e74c3c;
+    /* Verde manjericão */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#login button:hover {
+    background-color: #e74c3c;
+    /* Verde mais escuro */
+}
