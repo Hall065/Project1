@@ -1,11 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedidos</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="pedir.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet" />
+  <title>Pizzaria Monaco - Pedidos</title>
 </head>
 <body>
-    <h1>Vou Fazer Espera um Pouco ai Man</h1>
+  <!-- Cabeçalho -->
+  <div class="faixa-vermelha">
+    <div class="esquerda">
+      <img src="Logos/LogoBege.png" alt="Logo" class="logo" />
+      <div class="nome-pizzaria">Pizzaria Monaco</div>
+    </div>
+
+    <nav class="meio">
+      <a href="inicial.html">Home</a>
+      <a href="cardapio.html">Cardápio</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+
+    <div class="direita">
+      <button id="btn-voltar" class="btn-voltar">Voltar</button>
+    </div>
+  </div>
+
+  <main class="pedido-container">
+
+  <h1>Faça seu Pedido</h1>
+  <p><em>Itens temporários - Futuramente o sistema de cadastro integrará o cardápio e pedidos.</em></p>
+
+  <!-- Pedir Pizza -->
+
+  <section class="form-pedido-unificado">
+    <label for="select-pizza">Escolha sua pizza:</label>
+    <select id="select-pizza">
+      <option value="" disabled selected>Selecione um sabor</option>
+      <option value="Margherita">Margherita - R$35,90</option>
+      <option value="Calabresa">Calabresa - R$37,90</option>
+      <option value="Mussarela">Mussarela - R$34,90</option>
+      <option value="Portuguesa">Portuguesa - R$39,90</option>
+      <!-- adicione mais opções aqui -->
+    </select>
+
+    <div class="controle-quantidade">
+      <button class="btn-quantidade" data-op="menos">-</button>
+      <input type="text" id="quantidade" value="1" readonly />
+      <button class="btn-quantidade" data-op="mais">+</button>
+    </div>
+
+    <textarea id="obs-pizza" placeholder="Observações para esta pizza..."></textarea>
+
+    <button id="btn-adicionar-carrinho" class="btn-adicionar-carrinho">Adicionar ao carrinho</button>
+  </section>
+
+    <!-- Pedir Adicionais -->
+
+    <section class="form-pedido-unificado">
+    <label for="select-pizza">Escolha seus Adicionais:</label>
+    <select id="select-pizza">
+      <option value="" disabled selected>Selecione um produto</option>
+      <option value="Refrigerante">Refrigerante - R$11,90</option>
+      <option value="Suco">Suco - R$9,90</option>
+      <option value="Alcool">Bebida Alcolica - R$14,90</option>
+      <option value="Agua">Água - R$4,90</option>
+      <!-- adicione mais opções aqui -->
+    </select>
+
+    <div class="controle-quantidade">
+      <button class="btn-quantidade" data-op="menos">-</button>
+      <input type="text" id="quantidade" value="1" readonly />
+      <button class="btn-quantidade" data-op="mais">+</button>
+    </div>
+
+    <textarea id="obs-pizza" placeholder="Observações para este produto..."></textarea>
+
+    <button id="btn-adicionar-carrinho" class="btn-adicionar-carrinho">Adicionar ao carrinho</button>
+  </section>
+
+    <!-- Carrinho -->
+
+  <section class="carrinho-pedido">
+    <h2>Carrinho</h2>
+    <p class="carrinho-vazio">Seu carrinho está vazio.</p>
+    <ul class="lista-carrinho"></ul>
+  </section>
+
+</main>
+
+  <script src="Pizzaria.js"></script>
 </body>
 </html>

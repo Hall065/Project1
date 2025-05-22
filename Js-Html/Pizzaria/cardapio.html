@@ -13,21 +13,25 @@
   <div class="faixa-vermelha">
     <div class="esquerda">
       <img src="Logos/LogoBege.png" alt="Logo" class="logo">
-      <div class="nome-pizzaria">Monaco</div>
+      <div class="nome-pizzaria">Pizzaria Monaco</div>
     </div>
+
     <nav class="meio">
       <a href="inicial.html">Home</a>
       <a class="active" href="#">Cardápio</a>
-      <a href="#">Sobre</a>
-      <a href="#">Contato</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="contato.html">Contato</a>
     </nav>
+
     <div class="direita">
-      <button class="order-btn">Peça Agora</button>
+      <button class="order-btn order-btn-vermelho" onclick="window.location.href='pedir.html'">Peça Agora</button>
     </div>
   </div>
 
   <!-- Conteúdo principal -->
   <main class="container-cardapio">
+    
+    <!-- Introdução -->
     <section class="intro">
       <h1 class="titulo-principal">Pizzas</h1>
       <p class="descricao">
@@ -41,17 +45,19 @@
       <div class="categoria-texto">
         <h2>Pizzas Clássicas</h2>
         <p>Os sabores tradicionais que todo mundo ama, preparados com receita autêntica e muito sabor!</p>
-          <img src="Logos/pizzagenerica.jpeg" class="pizzaDescricao">
+        <img src="Logos/pizzagenerica.jpeg" class="pizzaDescricao">
       </div>
+
       <div class="categoria-texto">
         <h2>Pizzas Especiais</h2>
         <p>Combinações únicas e irresistíveis para quem quer sair do comum e experimentar novos sabores!</p>
-          <img src="Logos/pizzagenerica.jpeg" class="pizzaDescricao">
+        <img src="Logos/pizzagenerica.jpeg" class="pizzaDescricao">
       </div>
     </section>
 
     <!-- Cardápio -->
     <section class="tabelas">
+
       <div class="bloco">
         <h3>Pizzas Clássicas</h3>
         <ul>
@@ -116,8 +122,10 @@
         </ul>
         <button class="order-btn order-btn-vermelho" onclick="window.location.href='pedir.html'">Peça Agora</button>
       </div>
+
     </section>
   </main>
-
+  
+  <script src="Pizzaria.js"></script>
 </body>
 </html>

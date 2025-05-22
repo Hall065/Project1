@@ -1,86 +1,136 @@
-/* Importar fonte do Google Fonts */
+/* ================================
+   Fonte
+================================ */
 @import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap');
 
+/* ================================
+   Reset
+================================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ================================
+   Corpo
+================================ */
 body {
+  margin-top: 20px;
   font-family: 'Sansita Swashed', cursive;
   background-color: #D9C39D;
   color: #6b2f2f;
 }
 
-/* Cabeçalho */
+/* ================================
+   Faixa Vermelha (Header)
+================================ */
 .faixa-vermelha {
-  font-family: 'Sansita Swashed', cursive;
   background-color: #9F2C15;
-  color: #fff;
+  height: 60px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 30px;
+  padding: 0 20px;
+  color: white;
 }
 
-.esquerda {
+.faixa-vermelha .esquerda,
+.faixa-vermelha .meio,
+.faixa-vermelha .direita {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
+/* Esquerda (logo + nome) */
 .logo {
   width: 40px;
   height: 40px;
+  margin-right: 10px;
 }
 
 .nome-pizzaria {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: normal;
+}
+
+/* Meio (links de navegação) */
+.meio {
+  display: flex;
+  gap: 20px;
+  margin-left: -40px;
 }
 
 .meio a {
   margin: 0 15px;
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: normal;
   font-size: 1rem;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
 .meio a:hover,
-.meio a.active {
-  background-color: #6b2f2f;
+.meio a.active,
+.faixa-vermelha .meio a:hover,
+.faixa-vermelha .meio a.active {
+  background-color: #7f1e10;
 }
 
-.order-btn {
-  font-family: 'Sansita Swashed', cursive;
-  background-color: #D9C39D;
-  color: #6b2f2f;
+/* Direita (botão pedido) */
+.order-btn,
+.faixa-vermelha .direita .order-btn {
+  background-color: #9F2C15;
+  color: white;
   font-weight: bold;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 20px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 2px solid white;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: background-color 0.3s ease;
+  font-family: 'Sansita Swashed', cursive;
+  width: 100%;
 }
 
-.order-btn:hover {
-  transform: scale(1.05);
+.order-btn:hover,
+.faixa-vermelha .direita .order-btn:hover {
+  background-color: white;
+  color: #9F2C15;
+  border-color: #9F2C15;
 }
 
-/* Conteúdo principal */
+/* Variação botão vermelho */
+.order-btn-vermelho {
+  background-color: #9F2C15;
+  color: white;
+  border: none;
+}
+
+.order-btn-vermelho:hover {
+  background-color: #b54234;
+  color: white;
+}
+
+/* ================================
+   Conteúdo Principal
+================================ */
 .container-cardapio {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   padding: 40px 60px;
+  max-width: 1000px;
+  margin: 40px auto;
 }
 
 .titulo-principal {
-  font-size: 3rem;
-  color: #9F2C15;
+  font-size: 40px;
+  color: #333;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .descricao {
@@ -89,6 +139,7 @@ body {
   margin-bottom: 40px;
 }
 
+/* Informações das Categorias */
 .categorias-info {
   background-color: white;
   border-radius: 15px;
@@ -96,11 +147,11 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-around;
-  text-align: center;
-  margin: 40px auto; /* auto centraliza horizontalmente */
   align-items: center;
-  width: 80%;         /* define a largura da caixa */
-  max-width: 1000px;  /* limita o tamanho máximo */
+  text-align: center;
+  margin: 40px auto;
+  width: 80%;
+  max-width: 1000px;
 }
 
 .categoria-texto h2 {
@@ -117,7 +168,9 @@ body {
   font-size: 1rem;
 }
 
-/* Blocos das listas */
+/* ================================
+   Blocos de Itens (Tabelas)
+================================ */
 .tabelas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -126,9 +179,9 @@ body {
 
 .bloco {
   background-color: white;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .bloco h3 {
@@ -145,35 +198,30 @@ body {
   font-size: 1rem;
 }
 
-  .btn-pedir {
-    font-family: 'Sansita Swashed', cursive;
-    background-color: #D9C39D;
-    color: #000000;
-    padding: 12px 16px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-  }
+/* ================================
+   Botões Extras
+================================ */
+.btn-pedir {
+  font-family: 'Sansita Swashed', cursive;
+  background-color: #D9C39D;
+  color: #000000;
+  padding: 12px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
 
-  .btn-pedir:hover {
-    transform: scale(1.05);
-  }
+.btn-pedir:hover {
+  transform: scale(1.05);
+}
 
-  .order-btn-vermelho {
-    background-color: #9F2C15; /* vermelho escuro */
-    color: white;
-    border: none;
-  }
-
-  .order-btn-vermelho:hover {
-    background-color: #b54234; /* vermelho um pouco mais claro no hover */
-    color: white;
-  }
-
-  .pizzaDescricao {
-    width: 300px; /* ou 80px, ajusta como quiser */
-    height: auto;
-    margin-top: 10px;
-  }
+/* ================================
+   Imagens
+================================ */
+.pizzaDescricao {
+  width: 300px;
+  height: auto;
+  margin-top: 10px;
+}
