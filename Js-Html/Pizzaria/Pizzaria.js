@@ -233,52 +233,56 @@ function voltarLogin() {
 
 // === PEDIDOS ===
 document.addEventListener('DOMContentLoaded', () => {
-  const btnMais = document.querySelector('.btn-quantidade[data-op="mais"]');
-  const btnMenos = document.querySelector('.btn-quantidade[data-op="menos"]');
-  const inputQuantidade = document.getElementById('quantidade');
-  const selectPizza = document.getElementById('select-pizza');
-  const obsPizza = document.getElementById('obs-pizza');
-  const btnAdicionar = document.getElementById('btn-adicionar-carrinho');
   const listaCarrinho = document.querySelector('.lista-carrinho');
   const carrinhoVazio = document.querySelector('.carrinho-vazio');
 
-  btnMais.addEventListener('click', () => {
-    let qtd = parseInt(inputQuantidade.value);
-    inputQuantidade.value = qtd + 1;
-  });
+  // Seleciona todos os formulários (pizza, bebida, etc)
+  document.querySelectorAll('.form-pedido-unificado').forEach(form => {
+    const btnMais = form.querySelector('.btn-quantidade[data-op="mais"]');
+    const btnMenos = form.querySelector('.btn-quantidade[data-op="menos"]');
+    const inputQuantidade = form.querySelector('.quantidade');
+    const selectProduto = form.querySelector('.select-produto');
+    const textareaObs = form.querySelector('.obs-produto');
+    const btnAdicionar = form.querySelector('.btn-adicionar-carrinho');
 
-  btnMenos.addEventListener('click', () => {
-    let qtd = parseInt(inputQuantidade.value);
-    if (qtd > 1) inputQuantidade.value = qtd - 1;
-  });
+    btnMais.addEventListener('click', () => {
+      let qtd = parseInt(inputQuantidade.value);
+      inputQuantidade.value = qtd + 1;
+    });
 
-  btnAdicionar.addEventListener('click', () => {
-    const pizzaSelecionada = selectPizza.value;
-    const pizzaTexto = selectPizza.options[selectPizza.selectedIndex]?.text || '';
-    const quantidade = parseInt(inputQuantidade.value);
-    const observacao = obsPizza.value.trim();
+    btnMenos.addEventListener('click', () => {
+      let qtd = parseInt(inputQuantidade.value);
+      if (qtd > 1) inputQuantidade.value = qtd - 1;
+    });
 
-    if (!pizzaSelecionada) {
-      alert('Por favor, selecione um sabor de pizza.');
-      return;
-    }
+    btnAdicionar.addEventListener('click', () => {
+      const valorSelecionado = selectProduto.value;
+      const textoSelecionado = selectProduto.options[selectProduto.selectedIndex]?.text || '';
+      const quantidade = parseInt(inputQuantidade.value);
+      const observacao = textareaObs.value.trim();
 
-    // Criar item do carrinho
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <strong>${pizzaTexto}</strong> x ${quantidade}
-      ${observacao ? `<br><em>Obs: ${observacao}</em>` : ''}
-    `;
+      if (!valorSelecionado) {
+        alert('Por favor, selecione um item.');
+        return;
+      }
 
-    listaCarrinho.appendChild(li);
+      // Criar item do carrinho
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <strong>${textoSelecionado}</strong> x ${quantidade}
+        ${observacao ? `<br><em>Obs: ${observacao}</em>` : ''}
+      `;
 
-    // Limpar formulário
-    selectPizza.selectedIndex = 0;
-    inputQuantidade.value = 1;
-    obsPizza.value = '';
+      listaCarrinho.appendChild(li);
 
-    // Atualizar mensagem do carrinho vazio
-    carrinhoVazio.style.display = 'none';
+      // Limpar formulário após adicionar
+      selectProduto.selectedIndex = 0;
+      inputQuantidade.value = 1;
+      textareaObs.value = '';
+
+      // Mostrar lista e esconder texto "carrinho vazio"
+      carrinhoVazio.style.display = 'none';
+    });
   });
 });
 

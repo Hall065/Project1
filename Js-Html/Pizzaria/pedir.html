@@ -34,51 +34,48 @@
 
   <!-- Pedir Pizza -->
 
-  <section class="form-pedido-unificado">
-    <label for="select-pizza">Escolha sua pizza:</label>
-    <select id="select-pizza">
-      <option value="" disabled selected>Selecione um sabor</option>
-      <option value="Margherita">Margherita - R$35,90</option>
-      <option value="Calabresa">Calabresa - R$37,90</option>
-      <option value="Mussarela">Mussarela - R$34,90</option>
-      <option value="Portuguesa">Portuguesa - R$39,90</option>
-      <!-- adicione mais opções aqui -->
-    </select>
+  <section class="form-pedido-unificado pizza">
+  <label for="select-pizza">Escolha sua pizza:</label>
+  <select id="select-pizza-pizza" class="select-produto">
+    <option value="" disabled selected>Selecione um sabor</option>
+    <option value="Margherita">Margherita - R$35,90</option>
+    <option value="Calabresa">Calabresa - R$37,90</option>
+    <option value="Mussarela">Mussarela - R$34,90</option>
+    <option value="Portuguesa">Portuguesa - R$39,90</option>
+  </select>
 
-    <div class="controle-quantidade">
-      <button class="btn-quantidade" data-op="menos">-</button>
-      <input type="text" id="quantidade" value="1" readonly />
-      <button class="btn-quantidade" data-op="mais">+</button>
-    </div>
+  <div class="controle-quantidade">
+    <button class="btn-quantidade" data-op="menos">-</button>
+    <input type="text" class="quantidade" value="1" readonly />
+    <button class="btn-quantidade" data-op="mais">+</button>
+  </div>
 
-    <textarea id="obs-pizza" placeholder="Observações para esta pizza..."></textarea>
+  <textarea class="obs-produto" placeholder="Observações para esta pizza..."></textarea>
 
-    <button id="btn-adicionar-carrinho" class="btn-adicionar-carrinho">Adicionar ao carrinho</button>
-  </section>
+  <button class="btn-adicionar-carrinho">Adicionar ao carrinho</button>
+</section>
 
-    <!-- Pedir Adicionais -->
+<section class="form-pedido-unificado bebida">
+  <label for="select-bebida">Escolha seus Adicionais:</label>
+  <select id="select-bebida" class="select-produto">
+    <option value="" disabled selected>Selecione um produto</option>
+    <option value="Refrigerante">Refrigerante - R$11,90</option>
+    <option value="Suco">Suco - R$9,90</option>
+    <option value="Alcool">Bebida Alcolica - R$14,90</option>
+    <option value="Agua">Água - R$4,90</option>
+  </select>
 
-    <section class="form-pedido-unificado">
-    <label for="select-pizza">Escolha seus Adicionais:</label>
-    <select id="select-pizza">
-      <option value="" disabled selected>Selecione um produto</option>
-      <option value="Refrigerante">Refrigerante - R$11,90</option>
-      <option value="Suco">Suco - R$9,90</option>
-      <option value="Alcool">Bebida Alcolica - R$14,90</option>
-      <option value="Agua">Água - R$4,90</option>
-      <!-- adicione mais opções aqui -->
-    </select>
+  <div class="controle-quantidade">
+    <button class="btn-quantidade" data-op="menos">-</button>
+    <input type="text" class="quantidade" value="1" readonly />
+    <button class="btn-quantidade" data-op="mais">+</button>
+  </div>
 
-    <div class="controle-quantidade">
-      <button class="btn-quantidade" data-op="menos">-</button>
-      <input type="text" id="quantidade" value="1" readonly />
-      <button class="btn-quantidade" data-op="mais">+</button>
-    </div>
+  <textarea class="obs-produto" placeholder="Observações para este produto..."></textarea>
 
-    <textarea id="obs-pizza" placeholder="Observações para este produto..."></textarea>
+  <button class="btn-adicionar-carrinho">Adicionar ao carrinho</button>
+</section>
 
-    <button id="btn-adicionar-carrinho" class="btn-adicionar-carrinho">Adicionar ao carrinho</button>
-  </section>
 
     <!-- Carrinho -->
 
