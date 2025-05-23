@@ -42,7 +42,7 @@ body {
 .meio {
   display: flex;
   gap: 15px;
-  margin-left: -82px;
+  margin-left: -40px;
 }
 
 .meio a {
@@ -114,4 +114,41 @@ body {
   background-color: white;
   color: #9F2C15;
   border-color: #9F2C15;
+}
+
+.conteudo {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  color: #4d2c19;
+}
+
+.sobre h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.sobre p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.imagem-sobre {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.quadro-branco {
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-width: 900px;
+  margin: 40px auto;
+  text-align: center;
 }

@@ -42,7 +42,7 @@ body {
 .meio {
   display: flex;
   gap: 15px;
-  margin-left: -82px;
+  margin-left: -40px;
 }
 
 .meio a {
@@ -115,3 +115,53 @@ body {
   color: #9F2C15;
   border-color: #9F2C15;
 }
+
+.lista-contato {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  font-size: 1.1rem;
+  color: #4d2c19;
+}
+
+.lista-contato li {
+  margin-bottom: 10px;
+}
+
+.quadro-branco {
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-width: 900px;
+  margin: 40px auto;
+  text-align: center;
+  color: #4d2c19;
+}
+
+.lista-contato {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  font-size: 1.1rem;
+}
+
+.lista-contato li {
+  margin-bottom: 10px;
+}
+
+.lista-contato a {
+  color: #9F2C15;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.lista-contato a:hover {
+  text-decoration: underline;
+}
+
+.contato h2 {
+  margin-top: 30px;
+  font-size: 1.8rem;
+}
+
