@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<head><meta charset="UTF-8"><title>Login</title></head>
+<body>
+    <h1>Login</h1>
+    <form method="post">
+        <label>Usuário:</label><br>
+        <input type="text" name="usuario" required><br>
+        <label>Senha:</label><br>
+        <input type="password" name="senha" required><br>
+        <label>Tipo:</label><br>
+        <select name="tipo">
+            <option value="adm">Administrador</option>
+            <option value="cliente">Cliente</option>
+        </select><br><br>
+        <button type="submit">Entrar</button>
+    </form>
+    <br>
+    <a href="{{ url_for('home') }}">Voltar</a>
+</body>
+</html>
