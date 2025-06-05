@@ -1,0 +1,73 @@
+/* BASE GERAL */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Sansita Swashed', cursive;
+  background-color: #D9C39D;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 500px;
+  margin: 60px auto;
+  background-color: #f0e5cc;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  color: #3b2f15;
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-pagamento {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-pagamento label {
+  font-weight: bold;
+  color: #3b2f15;
+}
+
+.form-pagamento input[type="text"],
+.form-pagamento input[type="month"] {
+  font-family: 'Sansita Swashed', cursive;
+  font-size: 1rem;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 2px solid #9F2C15;
+  background-color: #f9f3e8;
+  color: #3b2f15;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-pagamento input:focus {
+  outline: none;
+  border-color: #b54234;
+  background-color: #fff3db;
+}
+
+.form-pagamento button {
+  background-color: #9F2C15;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-family: 'Sansita Swashed', cursive;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.form-pagamento button:hover {
+  background-color: #b54234;
+}

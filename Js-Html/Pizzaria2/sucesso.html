@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pagamento Realizado</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Pagamento Realizado com Sucesso!</h1>
+    <p><strong>Nome no Cartão:</strong> <?php echo htmlspecialchars($nome); ?></p>
+    <p><strong>Número do Cartão:</strong> <?php echo htmlspecialchars($numero); ?></p>
+    <p><strong>Validade:</strong> <?php echo htmlspecialchars($validade); ?></p>
+    <p><strong>CVV:</strong> <?php echo htmlspecialchars($cvv); ?></p>
+  </div>
+</body>
+</html>

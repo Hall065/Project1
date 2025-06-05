@@ -1,27 +1,46 @@
-// === LOGIN ===
-function exibirMensagem(texto, tipo) {
-  const mensagem = document.getElementById("mensagem");
-  mensagem.textContent = texto;
-  mensagem.className = `mensagem ${tipo}`;
-  mensagem.classList.remove("hidden");
+document.addEventListener("DOMContentLoaded", () => {
+  // === LOGIN ===
+  function exibirMensagem(texto, tipo) {
+    const mensagem = document.getElementById("mensagem");
+    if (!mensagem) return;
+    mensagem.textContent = texto;
+    mensagem.className = `mensagem ${tipo}`;
+    mensagem.classList.remove("hidden");
 
-  setTimeout(() => {
-    mensagem.classList.add("hidden");
-  }, 3000);
-}
+    setTimeout(() => {
+      mensagem.classList.add("hidden");
+    }, 3000);
+  }
 
-const usuarios = [
-  { email: "teste@email.com", senha: "1234", tipo: "cliente" },
-  { email: "admin@pizza.com", senha: "pizza1234", tipo: "admin" }
-];
+  // Usuários fixos (admin + cliente de exemplo)
+  const usuariosFixos = [
+    { email: "admin@pizza.com", senha: "pizza1234", tipo: "admin" },
+    { email: "teste@email.com", senha: "1234", tipo: "cliente" }
+  ];
 
-document.addEventListener("DOMContentLoaded", function () {
-  if (document.getElementById("btn-entrar")) {
-    document.getElementById("btn-entrar").addEventListener("click", function () {
-      const email = document.getElementById("email").value;
+  // LOGIN
+  const btnEntrar = document.getElementById("btn-entrar");
+  if (btnEntrar) {
+    btnEntrar.addEventListener("click", () => {
+      const email = document.getElementById("email").value.trim();
       const senha = document.getElementById("senha").value;
 
-      const usuarioValido = usuarios.find(user => user.email === email && user.senha === senha);
+      // Primeiro: procura nos usuários fixos
+      const usuarioFixado = usuariosFixos.find(
+        user => user.email === email && user.senha === senha
+      );
+
+      // Se não achou, tenta pegar do localStorage
+      let usuarioLocal = null;
+      const usuarioSalvo = localStorage.getItem(email);
+      if (usuarioSalvo) {
+        const usuarioObj = JSON.parse(usuarioSalvo);
+        if (usuarioObj.senha === senha && usuarioObj.tipo === "cliente") {
+          usuarioLocal = usuarioObj;
+        }
+      }
+
+      const usuarioValido = usuarioFixado || usuarioLocal;
 
       if (usuarioValido) {
         exibirMensagem("Login realizado com sucesso!", "sucesso");
@@ -32,259 +51,351 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Email ou senha inválidos!");
       }
     });
+  }
 
-    document.getElementById("esqueci-senha").addEventListener("click", function (e) {
+  // Esqueci senha
+  const linkEsqueciSenha = document.getElementById("esqueci-senha");
+  if (linkEsqueciSenha) {
+    linkEsqueciSenha.addEventListener("click", (e) => {
       e.preventDefault();
-      alert("Função de recuperação de senha ainda não implementada!");
-    });
+      const email = prompt("Digite o seu e-mail cadastrado:");
 
-    document.getElementById("criar-conta").addEventListener("click", function (e) {
-      e.preventDefault();
-      alert("Redirecionamento para página de cadastro em breve!");
+      if (!email) {
+        alert("Você precisa digitar um e-mail!");
+        return;
+      }
+
+      const usuario = localStorage.getItem(email);
+      if (!usuario) {
+        alert("E-mail não encontrado!");
+        return;
+      }
+
+      const dados = JSON.parse(usuario);
+      alert(`Sua senha é: ${dados.senha}`);
     });
   }
-});
 
-// === INICIAL ===
+  // Criar conta
+  const linkCriarConta = document.getElementById("criar-conta");
+  if (linkCriarConta) {
+    linkCriarConta.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "cadastro.html";
+    });
+  }
 
-//Botão de Sair
-document.addEventListener("DOMContentLoaded", function () {
+  // === INICIAL ===
   const btnSair = document.getElementById("btn-sair");
   if (btnSair) {
     btnSair.addEventListener("click", () => {
       window.location.href = "login.html";
     });
   }
-});
 
-//Botão de Voltar
-document.addEventListener("DOMContentLoaded", function () {
   const btnVoltar = document.getElementById("btn-voltar");
   if (btnVoltar) {
     btnVoltar.addEventListener("click", () => {
       window.location.href = "inicial.html";
     });
   }
-});
 
-// === ADMINISTRAÇÃO ===
-let pizzaria = [];
+  // === ADMINISTRAÇÃO ===
+  let pizzaria = JSON.parse(localStorage.getItem("pizzas")) || [];
 
-function mostrarSecao(secao) {
-  const secoes = ['adicionar', 'consultar', 'alterar', 'venda', 'relatorio-vendas'];
-  secoes.forEach(id => document.getElementById(id).classList.add("hidden"));
-  document.getElementById(secao).classList.remove("hidden");
-}
-
-function adicionarPizza() {
-  const nome = document.getElementById("nome").value;
-  const conteudo = document.getElementById("conteudo").value;
-  const categoria = document.getElementById("categoria").value;
-
-  if (nome && conteudo && categoria) {
-    pizzaria.push({ nome, conteudo, categoria });
-    document.getElementById("nome").value = "";
-    document.getElementById("conteudo").value = "";
-    document.getElementById("categoria").value = "";
-    atualizarLista();
-    alert("Pizza adicionada com sucesso!");
-  } else {
-    alert("Por favor, preencha todos os campos.");
-  }
-}
-
-function buscarPizza() {
-  const busca = document.getElementById("busca").value.toLowerCase();
-  const resultados = pizzaria.filter((pizza) =>
-    pizza.nome.toLowerCase().includes(busca)
-  );
-  atualizarLista(resultados);
-}
-
-let pizzaParaAlterar = null;
-
-function buscarPizzaParaAlterar() {
-  const busca = document.getElementById("busca-alterar").value.toLowerCase();
-
-  if (!busca) {
-    pizzaParaAlterar = null;
-    document.getElementById("form-alterar").classList.add("hidden");
-    return;
+  function mostrarSecao(secao) {
+    const secoes = ["adicionar", "consultar", "alterar", "venda", "relatorio-vendas"];
+    secoes.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add("hidden");
+    });
+    const secaoAtiva = document.getElementById(secao);
+    if (secaoAtiva) secaoAtiva.classList.remove("hidden");
   }
 
-  pizzaParaAlterar = pizzaria.find((pizza) =>
-    pizza.nome.toLowerCase().includes(busca)
-  );
-
-  if (pizzaParaAlterar) {
-    document.getElementById("form-alterar").classList.remove("hidden");
-    document.getElementById("novo-nome").value = pizzaParaAlterar.nome;
-    document.getElementById("novo-conteudo").value = pizzaParaAlterar.conteudo;
-    document.getElementById("nova-categoria").value = pizzaParaAlterar.categoria;
-  } else {
-    pizzaParaAlterar = null;
-    document.getElementById("form-alterar").classList.add("hidden");
-  }
-}
-
-function alterarPizza() {
-  if (!pizzaParaAlterar) {
-    alert("Por favor, busque e selecione uma pizza para alterar.");
-    return;
+  function atualizarLista(lista = pizzaria) {
+    const tabela = document.getElementById("lista-pizzas");
+    if (!tabela) return;
+    tabela.innerHTML = "";
+    lista.forEach((pizza) => {
+      const linha = document.createElement("tr");
+      linha.innerHTML = `
+        <td>${pizza.nome}</td>
+        <td>${pizza.conteudo}</td>
+        <td>${pizza.categoria}</td>
+      `;
+      tabela.appendChild(linha);
+    });
   }
 
-  const novoNome = document.getElementById("novo-nome").value.trim();
-  const novoConteudo = document.getElementById("novo-conteudo").value.trim();
-  const novaCategoria = document.getElementById("nova-categoria").value.trim();
+  function adicionarPizza() {
+    const nome = document.getElementById("nome")?.value.trim();
+    const conteudo = document.getElementById("conteudo")?.value.trim();
+    const categoria = document.getElementById("categoria")?.value.trim();
 
-  if (novoNome && novoConteudo && novaCategoria) {
-    pizzaParaAlterar.nome = novoNome;
-    pizzaParaAlterar.conteudo = novoConteudo;
-    pizzaParaAlterar.categoria = novaCategoria;
+    if (nome && conteudo && categoria) {
+      const novaPizza = { nome, conteudo, categoria };
+      pizzaria.push(novaPizza);
+      localStorage.setItem("pizzas", JSON.stringify(pizzaria));
 
-    atualizarLista();
-    alert("Pizza alterada com sucesso!");
-    document.getElementById("form-alterar").classList.add("hidden");
-    document.getElementById("busca-alterar").value = "";
-    pizzaParaAlterar = null;
-  } else {
-    alert("Por favor, preencha todos os campos.");
+      // limpar campos
+      document.getElementById("nome").value = "";
+      document.getElementById("conteudo").value = "";
+      document.getElementById("categoria").value = "";
+
+      atualizarLista();
+      alert("Pizza adicionada com sucesso!");
+    } else {
+      alert("Por favor, preencha todos os campos.");
+    }
   }
-}
 
-function atualizarLista(lista = pizzaria) {
-  const tabela = document.getElementById("lista-pizzas");
-  tabela.innerHTML = "";
+  // Buscar pizza para consultar
+  function buscarPizza() {
+    const busca = document.getElementById("busca")?.value.toLowerCase() || "";
+    const resultados = pizzaria.filter((pizza) =>
+      pizza.nome.toLowerCase().includes(busca)
+    );
+    atualizarLista(resultados);
+  }
 
-  lista.forEach((pizza) => {
-    const linha = document.createElement("tr");
-    linha.innerHTML = `
-      <td>${pizza.nome}</td>
-      <td>${pizza.conteudo}</td>
-      <td>${pizza.categoria}</td>
-    `;
-    tabela.appendChild(linha);
+  // Alterar pizza
+  let pizzaParaAlterar = null;
+
+  function buscarPizzaParaAlterar() {
+    const busca = document.getElementById("busca-alterar")?.value.toLowerCase() || "";
+    if (!busca) {
+      pizzaParaAlterar = null;
+      document.getElementById("form-alterar")?.classList.add("hidden");
+      return;
+    }
+
+    pizzaParaAlterar = pizzaria.find((pizza) =>
+      pizza.nome.toLowerCase().includes(busca)
+    );
+
+    if (pizzaParaAlterar) {
+      document.getElementById("form-alterar")?.classList.remove("hidden");
+      document.getElementById("novo-nome").value = pizzaParaAlterar.nome;
+      document.getElementById("novo-conteudo").value = pizzaParaAlterar.conteudo;
+      document.getElementById("nova-categoria").value = pizzaParaAlterar.categoria;
+    } else {
+      pizzaParaAlterar = null;
+      document.getElementById("form-alterar")?.classList.add("hidden");
+    }
+  }
+
+  function alterarPizza() {
+    if (!pizzaParaAlterar) {
+      alert("Por favor, busque e selecione uma pizza para alterar.");
+      return;
+    }
+
+    const novoNome = document.getElementById("novo-nome").value.trim();
+    const novoConteudo = document.getElementById("novo-conteudo").value.trim();
+    const novaCategoria = document.getElementById("nova-categoria").value.trim();
+
+    if (novoNome && novoConteudo && novaCategoria) {
+      pizzaParaAlterar.nome = novoNome;
+      pizzaParaAlterar.conteudo = novoConteudo;
+      pizzaParaAlterar.categoria = novaCategoria;
+
+      // Atualiza a lista e salva no localStorage
+      localStorage.setItem("pizzas", JSON.stringify(pizzaria));
+      atualizarLista();
+
+      alert("Pizza alterada com sucesso!");
+      document.getElementById("form-alterar").classList.add("hidden");
+      document.getElementById("busca-alterar").value = "";
+      pizzaParaAlterar = null;
+    } else {
+      alert("Por favor, preencha todos os campos.");
+    }
+  }
+
+  // Registro de vendas
+  let vendas = [];
+
+  function registrarVenda() {
+    const nomePizza = document.getElementById("venda-nome")?.value.trim();
+    const preco = parseFloat(document.getElementById("venda-preco")?.value);
+    const comprador = document.getElementById("venda-comprador")?.value.trim();
+
+    if (nomePizza && !isNaN(preco) && comprador) {
+      const listaVendas = document.getElementById("lista-vendas");
+      const item = document.createElement("li");
+      item.textContent = `Pizza: ${nomePizza} - Preço: R$${preco.toFixed(2)} - Comprador: ${comprador}`;
+      listaVendas.appendChild(item);
+
+      vendas.push({ nomePizza, preco, comprador });
+
+      document.getElementById("venda-nome").value = "";
+      document.getElementById("venda-preco").value = "";
+      document.getElementById("venda-comprador").value = "";
+    } else {
+      alert("Por favor, preencha todos os campos.");
+    }
+  }
+
+function carregarVendasDoLocalStorage() {
+  const pedidosSalvos = JSON.parse(localStorage.getItem('pedidos') || '[]');
+  const vendas = [];
+
+  pedidosSalvos.forEach(pedido => {
+    pedido.itens.forEach(itemTexto => {
+      vendas.push({
+        descricao: itemTexto,
+        comprador: pedido.data // ou qualquer outro dado que queira mostrar
+      });
+    });
   });
-}
 
-// Registro de Vendas
-let vendas = [];
-
-function registrarVenda() {
-  const nomePizza = document.getElementById("venda-nome").value;
-  const preco = parseFloat(document.getElementById("venda-preco").value);
-  const comprador = document.getElementById("venda-comprador").value;
-
-  if (nomePizza && !isNaN(preco) && comprador) {
-    const listaVendas = document.getElementById("lista-vendas");
-    const item = document.createElement("li");
-    item.textContent = `Pizza: ${nomePizza} - Preço: R$${preco.toFixed(2)} - Comprador: ${comprador}`;
-    listaVendas.appendChild(item);
-
-    vendas.push({ nomePizza, preco, comprador });
-
-    document.getElementById("venda-nome").value = "";
-    document.getElementById("venda-preco").value = "";
-    document.getElementById("venda-comprador").value = "";
-  } else {
-    alert("Por favor, preencha todos os campos.");
-  }
+  return vendas;
 }
 
 function gerarRelatorioVendas() {
   const tabelaRelatorio = document.getElementById("tabela-relatorio-vendas");
+  if (!tabelaRelatorio) return;
+
   tabelaRelatorio.innerHTML = "";
+
+  const vendas = carregarVendasDoLocalStorage();
 
   if (vendas.length === 0) {
     alert("Nenhuma venda registrada.");
     return;
   }
 
-  let totalVendas = 0;
-
   vendas.forEach((venda) => {
     const linha = document.createElement("tr");
     linha.innerHTML = `
-      <td>${venda.nomePizza}</td>
-      <td>R$${parseFloat(venda.preco).toFixed(2)}</td>
+      <td colspan="2">${venda.descricao}</td>
       <td>${venda.comprador}</td>
     `;
     tabelaRelatorio.appendChild(linha);
-    totalVendas += parseFloat(venda.preco);
   });
-
-  const linhaTotal = document.createElement("tr");
-  linhaTotal.innerHTML = `
-    <td><strong>Total de Vendas:</strong></td>
-    <td><strong>R$${totalVendas.toFixed(2)}</strong></td>
-    <td></td>
-  `;
-  tabelaRelatorio.appendChild(linhaTotal);
 
   document.getElementById("relatorio-vendas").classList.remove("hidden");
 }
 
-function voltarLogin() {
-  window.location.href = "login.html";
-}
-
-// === CARDÁPIO ===
-// (em breve)
-
-// === PEDIDOS ===
 document.addEventListener('DOMContentLoaded', () => {
-  const listaCarrinho = document.querySelector('.lista-carrinho');
-  const carrinhoVazio = document.querySelector('.carrinho-vazio');
+  gerarRelatorioVendas();
+});
 
-  // Seleciona todos os formulários (pizza, bebida, etc)
-  document.querySelectorAll('.form-pedido-unificado').forEach(form => {
+  function voltarLogin() {
+    window.location.href = "login.html";
+  }
+
+  // === PEDIDOS ===
+  const listaCarrinho = document.querySelector(".lista-carrinho");
+  const carrinhoVazio = document.querySelector(".carrinho-vazio");
+  const btnFinalizar = document.getElementById("btn-finalizar-pedido");
+
+  // Função para habilitar ou desabilitar o botão finalizar
+  function atualizarBotaoFinalizar() {
+    if (!btnFinalizar || !listaCarrinho) return;
+    btnFinalizar.disabled = listaCarrinho.children.length === 0;
+  }
+
+  atualizarBotaoFinalizar();
+
+  // Lógica para adicionar itens ao carrinho
+  document.querySelectorAll(".form-pedido-unificado").forEach((form) => {
     const btnMais = form.querySelector('.btn-quantidade[data-op="mais"]');
     const btnMenos = form.querySelector('.btn-quantidade[data-op="menos"]');
-    const inputQuantidade = form.querySelector('.quantidade');
-    const selectProduto = form.querySelector('.select-produto');
-    const textareaObs = form.querySelector('.obs-produto');
-    const btnAdicionar = form.querySelector('.btn-adicionar-carrinho');
+    const inputQuantidade = form.querySelector(".quantidade");
+    const selectProduto = form.querySelector(".select-produto");
+    const textareaObs = form.querySelector(".obs-produto");
+    const btnAdicionar = form.querySelector(".btn-adicionar-carrinho");
 
-    btnMais.addEventListener('click', () => {
+    btnMais?.addEventListener("click", () => {
       let qtd = parseInt(inputQuantidade.value);
       inputQuantidade.value = qtd + 1;
     });
 
-    btnMenos.addEventListener('click', () => {
+    btnMenos?.addEventListener("click", () => {
       let qtd = parseInt(inputQuantidade.value);
       if (qtd > 1) inputQuantidade.value = qtd - 1;
     });
 
-    btnAdicionar.addEventListener('click', () => {
+    btnAdicionar?.addEventListener("click", () => {
       const valorSelecionado = selectProduto.value;
-      const textoSelecionado = selectProduto.options[selectProduto.selectedIndex]?.text || '';
+      const textoSelecionado = selectProduto.options[selectProduto.selectedIndex]?.text || "";
       const quantidade = parseInt(inputQuantidade.value);
       const observacao = textareaObs.value.trim();
 
       if (!valorSelecionado) {
-        alert('Por favor, selecione um item.');
+        alert("Por favor, selecione um item.");
         return;
       }
 
-      // Criar item do carrinho
-      const li = document.createElement('li');
+      const li = document.createElement("li");
       li.innerHTML = `
         <strong>${textoSelecionado}</strong> x ${quantidade}
-        ${observacao ? `<br><em>Obs: ${observacao}</em>` : ''}
+        ${observacao ? `<br><em>Obs: ${observacao}</em>` : ""}
       `;
 
       listaCarrinho.appendChild(li);
+      carrinhoVazio.style.display = "none";
 
-      // Limpar formulário após adicionar
+      // Limpar formulário
       selectProduto.selectedIndex = 0;
       inputQuantidade.value = 1;
-      textareaObs.value = '';
+      textareaObs.value = "";
 
-      // Mostrar lista e esconder texto "carrinho vazio"
-      carrinhoVazio.style.display = 'none';
+      atualizarBotaoFinalizar();
     });
   });
-});
 
-// === SOBRE ===
-// (em breve)
+  btnFinalizar?.addEventListener("click", () => {
+    if (!listaCarrinho || !carrinhoVazio) return;
+
+    const pedidos = [];
+    listaCarrinho.querySelectorAll("li").forEach((li) => {
+      pedidos.push(li.innerHTML);
+    });
+
+    const pedidosSalvos = JSON.parse(localStorage.getItem("pedidos") || "[]");
+    pedidosSalvos.push({
+      itens: pedidos,
+      data: new Date().toISOString(),
+    });
+    localStorage.setItem("pedidos", JSON.stringify(pedidosSalvos));
+
+    listaCarrinho.innerHTML = "";
+    carrinhoVazio.style.display = "block";
+
+    atualizarBotaoFinalizar();
+
+    const msgSucesso = document.getElementById("mensagem-sucesso");
+    if (msgSucesso) {
+      msgSucesso.textContent = "Pedido finalizado com sucesso!";
+      msgSucesso.style.display = "block";
+      setTimeout(() => {
+        msgSucesso.style.display = "none";
+      }, 3000);
+    }
+  });
+
+  // Exibir pizzas cadastradas no select pizza do pedido
+  const selectPizza = document.getElementById("select-pizza-pizza");
+  if (selectPizza) {
+    selectPizza.innerHTML = '<option value="">Selecione uma pizza</option>';
+    pizzaria.forEach((pizza) => {
+      const option = document.createElement("option");
+      option.value = pizza.nome;
+      option.textContent = `${pizza.nome} - ${pizza.categoria}`;
+      selectPizza.appendChild(option);
+    });
+  }
+
+  // Expõe funções globais para serem usadas nos botões no HTML
+  window.adicionarPizza = adicionarPizza;
+  window.buscarPizza = buscarPizza;
+  window.buscarPizzaParaAlterar = buscarPizzaParaAlterar;
+  window.alterarPizza = alterarPizza;
+  window.registrarVenda = registrarVenda;
+  window.gerarRelatorioVendas = gerarRelatorioVendas;
+  window.mostrarSecao = mostrarSecao;
+  window.voltarLogin = voltarLogin;
+});

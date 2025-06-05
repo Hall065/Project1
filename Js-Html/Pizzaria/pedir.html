@@ -38,10 +38,6 @@
   <label for="select-pizza">Escolha sua pizza:</label>
   <select id="select-pizza-pizza" class="select-produto">
     <option value="" disabled selected>Selecione um sabor</option>
-    <option value="Margherita">Margherita - R$35,90</option>
-    <option value="Calabresa">Calabresa - R$37,90</option>
-    <option value="Mussarela">Mussarela - R$34,90</option>
-    <option value="Portuguesa">Portuguesa - R$39,90</option>
   </select>
 
   <div class="controle-quantidade">
@@ -79,11 +75,14 @@
 
     <!-- Carrinho -->
 
-  <section class="carrinho-pedido">
-    <h2>Carrinho</h2>
-    <p class="carrinho-vazio">Seu carrinho está vazio.</p>
-    <ul class="lista-carrinho"></ul>
-  </section>
+<section class="carrinho-pedido">
+  <h2>Carrinho</h2>
+  <p class="carrinho-vazio">Seu carrinho está vazio.</p>
+  <ul class="lista-carrinho"></ul>
+  <button id="btn-finalizar-pedido" disabled>Finalizar Pedido</button>
+  <p id="mensagem-sucesso" style="color: green; display: none; margin-top: 10px;"></p>
+</section>
+
 
 </main>
 

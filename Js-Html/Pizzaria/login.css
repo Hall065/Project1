@@ -78,7 +78,7 @@ button:hover {
 }
 
 .img-pizza {
-  width: 500px; /* Ajuste o tamanho total da pizza */
+  width: 800px; /* Ajuste o tamanho total da pizza */
   height: auto; /* Mantém a proporção da imagem */
   position: absolute;
   right: -10px; /* Posiciona a imagem à direita da tela */

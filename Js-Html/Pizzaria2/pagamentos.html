@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pagamento</title>
+  <link rel="stylesheet" href="formataçãopagamento.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Pagamento</h1>
+    <form action="pagamentos.php" method="POST" class="form-pagamento">
+      <label for="nome">Nome no Cartão:</label>
+      <input type="text" name="nome" id="nome" required>
+
+      <label for="numero">Número do Cartão:</label>
+      <input type="text" name="numero" id="numero" required maxlength="16">
+
+      <label for="validade">Validade:</label>
+      <input type="month" name="validade" id="validade" required>
+
+      <label for="cvv">CVV:</label>
+      <input type="text" name="cvv" id="cvv" required maxlength="4">
+
+      <input type="hidden" name="pedido" value="<?php echo isset($_POST['pedido']) ? htmlspecialchars($_POST['pedido']) : ''; ?>">
+
+      <button type="submit">Pagar</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,279 @@
+/* BASE GERAL */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Sansita Swashed', cursive;
+  background-color: #D9C39D;
+  margin: 0;
+  padding: 0;
+}
+
+/* NAVBAR SUPERIOR */
+.faixa-vermelha {
+  background-color: #9F2C15;
+  height: 60px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.esquerda {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.nome-pizzaria {
+  color: white;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.meio {
+  display: flex;
+  gap: 15px;
+  margin-left: -82px;
+}
+
+.meio a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.meio a.active,
+.meio a:hover {
+  background-color: #7f1e10;
+}
+
+.direita {
+  display: flex;
+  align-items: center;
+}
+
+/* BOTÕES GERAIS */
+.btn-sair,
+.order-btn,
+.promo-btn {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-family: 'Sansita Swashed', cursive;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-sair:hover {
+  background-color: white;
+  color: #9F2C15;
+}
+
+.order-btn-vermelho {
+  background-color: #9F2C15;
+  color: white;
+  border: none;
+}
+
+.order-btn-vermelho:hover {
+  background-color: #b54234;
+}
+
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: 400px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.bg-cozinha {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 0;
+}
+
+.img-pizza {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  height: auto;
+}
+
+.hero-texto {
+  position: absolute;
+  top: 50px;
+  left: 30px;
+  color: white;
+  z-index: 2;
+}
+
+.hero-texto h1 {
+  font-size: 30px;
+  margin: 0 0 10px 0;
+  font-weight: normal;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.btn-cardapio {
+  background-color: #912e27;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: normal;
+  transition: 0.3s ease;
+  display: inline-block;
+}
+
+.btn-cardapio:hover {
+  background-color: #b54234;
+}
+
+/* FAIXA INFERIOR */
+.faixa-inferior {
+  background-color: #9F2C15;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  margin-top: 0;
+}
+
+.combos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.combo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.combo img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.texto-esquerda {
+  flex: 1;
+  text-align: left;
+}
+
+/* PROMOÇÕES */
+.promo-section {
+  background-color: #D9C39D;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.promo-section h2 {
+  font-family: 'Sansita Swashed', cursive;
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #9F2C15;
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.promo-card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.promo-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.promo-img {
+  width: 180px;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.promo-card h3 {
+  font-family: 'Sansita Swashed', cursive;
+  font-size: 24px;
+  color: #9F2C15;
+  margin: 0 0 10px 0;
+}
+
+.promo-card p {
+  font-size: 16px;
+  color: #444;
+  margin: 0 0 20px 0;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.promo-btn {
+  background-color: #D9C39D;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 180px;
+}
+
+.promo-btn:hover {
+  background-color: #bfa56a;
+}
+
+.titulo-promocoes {
+  text-align: center;
+  font-size: 28px;
+  color: #9F2C15;
+  margin-top: -20px;
+}

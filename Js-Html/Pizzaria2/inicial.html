@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="inicial.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="faixa-vermelha">
+    <div class="esquerda">
+      <img src="Logos/LogoBege.png" alt="Logo" class="logo">
+      <div class="nome-pizzaria">Pizzaria Don Genaro's</div>
+    </div>
+
+    <nav class="meio">
+      <a class="active" href="#">Home</a>
+      <a href="cardapio.html">Cardápio</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+
+    <div class="direita">
+      <button id="btn-sair" class="btn-sair">Sair</button>
+    </div>
+  </div>
+
+  <div class="hero-section">
+    <img src="Logos/FundoCozinha.jpg" alt="Cozinha" class="bg-cozinha">
+    <img src="Logos/PizzaG.png" alt="Pizza" class="img-pizza">
+
+    <div class="hero-texto">
+      <h1>"A Verdadeira Pizza artesanal"</h1>
+      <button class="order-btn order-btn-vermelho" onclick="window.location.href='pedir.html'">Peça Agora</button>
+    </div>
+  </div>          
+
+  <div class="faixa-vermelha faixa-inferior">
+    <div class="combos">
+      <div class="combo texto-esquerda">
+        <span>+ de 80 combinações entre:</span>
+      </div>
+      <div class="combo">
+        <img src="Logos/carne.png" alt="Carne">
+        <span>Carne</span>
+      </div>
+      <div class="combo">
+        <img src="Logos/queijo.png" alt="Queijo">
+        <span>Queijo</span>
+      </div>
+      <div class="combo">
+        <img src="Logos/salada.png" alt="Vegetais">
+        <span>Vegetais</span>
+      </div>
+      <div class="combo">
+        <img src="Logos/folha.png" alt="Vegano">
+        <span>Vegano</span>
+      </div>
+      <div class="combo">
+        <img src="Logos/chocolate.png" alt="Doces">
+        <span>Doces</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="promo-section">
+    <h2 class="titulo-promocoes">Promoções Especiais</h2>
+    <div class="promo-grid">
+      <div class="promo-card">
+        <img src="Logos/pizzagenerica.jpeg" alt="Pizza Margherita" class="promo-img">
+        <h3>Pizza Margherita</h3>
+        <p>Molho de tomate, mussarela e manjericão fresco.</p>
+        <button class="order-btn order-btn-vermelho" onclick="window.location.href='pedir.html'">Peça Agora</button>
+      </div>
+      <div class="promo-card">
+        <img src="Logos/pizzagenerica.jpeg" alt="Pizza Calabresa" class="promo-img">
+        <h3>Pizza Calabresa</h3>
+        <p>Calabresa fatiada, cebola e queijo extra.</p>
+        <button class="order-btn order-btn-vermelho" onclick="window.location.href='pedir.html'">Peça Agora</button>
+      </div>
+      <div class="promo-card">
+        <img src="Logos/pizzagenerica.jpeg" alt="Pizza Vegetariana" class="promo-img">
+        <h3>Pizza Vegetariana</h3>
+        <p>Mix de vegetais frescos com queijo artesanal.</p>
+        <button class="order-btn order-btn-vermelho" onclick="window.location.href='pedir.html'">Peça Agora</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="Pizzaria.js"></script>
+</body>
+</html>

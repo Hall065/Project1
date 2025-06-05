@@ -1,0 +1,134 @@
+body {
+  font-family: 'Sansita Swashed', cursive;
+  background-color: #D9C39D;
+  margin: 0;
+  padding: 0;
+}
+
+.faixa-vermelha {
+  background-color: #9F2C15;
+  height: 60px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.esquerda {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.nome-pizzaria {
+  color: white;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.meio {
+  display: flex;
+  gap: 15px;
+  margin-left: -40px;
+}
+
+.meio a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.meio a.active,
+.meio a:hover {
+  background-color: #7f1e10;
+}
+
+.direita {
+  display: flex;
+  align-items: center;
+}
+
+.order-btn,
+.faixa-vermelha .direita .order-btn {
+  background-color: #9F2C15;
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Sansita Swashed', cursive;
+  width: 100%;
+}
+
+.order-btn:hover,
+.faixa-vermelha .direita .order-btn:hover {
+  background-color: white;
+  color: #9F2C15;
+  border-color: #9F2C15;
+}
+
+.conteudo {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  color: #4d2c19;
+}
+
+.quadro-branco {
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  margin: 40px auto;
+  text-align: left;
+}
+
+.form-cadastro {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-cadastro label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.form-cadastro input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Sansita Swashed', cursive;
+  font-size: 1rem;
+}
+
+.form-cadastro button {
+  background-color: #9F2C15;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-cadastro button:hover {
+  background-color: #b54234;
+}
