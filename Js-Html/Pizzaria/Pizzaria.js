@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const linha = document.createElement("tr");
       linha.innerHTML = `
         <td>${pizza.nome}</td>
-        <td>${pizza.conteudo}</td>
+        <td>${pizza.preco}</td>
         <td>${pizza.categoria}</td>
       `;
       tabela.appendChild(linha);
@@ -130,17 +130,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function adicionarPizza() {
     const nome = document.getElementById("nome")?.value.trim();
-    const conteudo = document.getElementById("conteudo")?.value.trim();
+const preço = document.getElementById("preço")?.value.trim();
+
     const categoria = document.getElementById("categoria")?.value.trim();
 
-    if (nome && conteudo && categoria) {
-      const novaPizza = { nome, conteudo, categoria };
+    if (nome && preco && categoria) {
+      const novaPizza = { nome, preco, categoria };
       pizzaria.push(novaPizza);
       localStorage.setItem("pizzas", JSON.stringify(pizzaria));
 
       // limpar campos
       document.getElementById("nome").value = "";
-      document.getElementById("conteudo").value = "";
+      document.getElementById("preco").value = "";
       document.getElementById("categoria").value = "";
 
       atualizarLista();
@@ -177,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (pizzaParaAlterar) {
       document.getElementById("form-alterar")?.classList.remove("hidden");
       document.getElementById("novo-nome").value = pizzaParaAlterar.nome;
-      document.getElementById("novo-conteudo").value = pizzaParaAlterar.conteudo;
+      document.getElementById("novo-preco").value = pizzaParaAlterar.preco;
       document.getElementById("nova-categoria").value = pizzaParaAlterar.categoria;
     } else {
       pizzaParaAlterar = null;
@@ -192,12 +193,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const novoNome = document.getElementById("novo-nome").value.trim();
-    const novoConteudo = document.getElementById("novo-conteudo").value.trim();
+    const novoPreco = document.getElementById("novo-preco").value.trim();
     const novaCategoria = document.getElementById("nova-categoria").value.trim();
 
-    if (novoNome && novoConteudo && novaCategoria) {
+    if (novoNome && novoPreco && novaCategoria) {
       pizzaParaAlterar.nome = novoNome;
-      pizzaParaAlterar.conteudo = novoConteudo;
+      pizzaParaAlterar.preco = novoPreco;
       pizzaParaAlterar.categoria = novaCategoria;
 
       // Atualiza a lista e salva no localStorage
@@ -245,6 +246,7 @@ function carregarVendasDoLocalStorage() {
     pedido.itens.forEach(itemTexto => {
       vendas.push({
         descricao: itemTexto,
+        preco: pedido.preco,
         comprador: pedido.data // ou qualquer outro dado que queira mostrar
       });
     });
@@ -259,20 +261,26 @@ function gerarRelatorioVendas() {
 
   tabelaRelatorio.innerHTML = "";
 
-  const vendas = carregarVendasDoLocalStorage();
+  const pedidosSalvos = JSON.parse(localStorage.getItem('pedidos') || '[]');
 
-  if (vendas.length === 0) {
+  if (pedidosSalvos.length === 0) {
     alert("Nenhuma venda registrada.");
     return;
   }
 
-  vendas.forEach((venda) => {
-    const linha = document.createElement("tr");
-    linha.innerHTML = `
-      <td colspan="2">${venda.descricao}</td>
-      <td>${venda.comprador}</td>
-    `;
-    tabelaRelatorio.appendChild(linha);
+  pedidosSalvos.forEach((pedido) => {
+    pedido.itens.forEach((item) => {
+      const linha = document.createElement("tr");
+      const precoTotal = (item.precoUnitario * item.quantidade).toFixed(2).replace(".", ",");
+      linha.innerHTML = `
+        <td>${item.nomePizza}</td>
+        <td>${item.quantidade}</td>
+        <td>R$ ${precoTotal}</td>
+        <td>${item.observacao || ""}</td>
+        <td>${new Date(pedido.data).toLocaleString()}</td>
+      `;
+      tabelaRelatorio.appendChild(linha);
+    });
   });
 
   document.getElementById("relatorio-vendas").classList.remove("hidden");
@@ -347,35 +355,63 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  btnFinalizar?.addEventListener("click", () => {
-    if (!listaCarrinho || !carrinhoVazio) return;
+btnFinalizar?.addEventListener("click", () => {
+  if (!listaCarrinho || !carrinhoVazio) return;
 
-    const pedidos = [];
-    listaCarrinho.querySelectorAll("li").forEach((li) => {
-      pedidos.push(li.innerHTML);
+  // Vamos criar uma lista estruturada dos pedidos
+  const pedidos = [];
+
+  listaCarrinho.querySelectorAll("li").forEach((li) => {
+    // li.innerHTML tem algo tipo: "<strong>NomePizza - Categoria</strong> x 2 <br><em>Obs: algo</em>"
+    const strong = li.querySelector("strong");
+    if (!strong) return;
+
+    // Extrair nome da pizza (antes do " - categoria")
+    const texto = strong.textContent; // ex: "Margherita - Tradicional"
+    const nomePizza = texto.split(" - ")[0].trim();
+
+    // Quantidade (ex: "x 2")
+    const matchQtd = li.textContent.match(/x (\d+)/);
+    const quantidade = matchQtd ? parseInt(matchQtd[1]) : 1;
+
+    // Observação (se houver)
+    const obsElem = li.querySelector("em");
+    const observacao = obsElem ? obsElem.textContent.replace("Obs: ", "") : "";
+
+    // Buscar preço da pizza cadastrada no admin
+    const pizzaCadastrada = pizzaria.find(p => p.nome === nomePizza);
+    const precoUnitario = pizzaCadastrada ? parseFloat(pizzaCadastrada.preço.replace(",", ".") || 0) : 0;
+
+    pedidos.push({
+      nomePizza,
+      precoUnitario,
+      quantidade,
+      observacao,
     });
-
-    const pedidosSalvos = JSON.parse(localStorage.getItem("pedidos") || "[]");
-    pedidosSalvos.push({
-      itens: pedidos,
-      data: new Date().toISOString(),
-    });
-    localStorage.setItem("pedidos", JSON.stringify(pedidosSalvos));
-
-    listaCarrinho.innerHTML = "";
-    carrinhoVazio.style.display = "block";
-
-    atualizarBotaoFinalizar();
-
-    const msgSucesso = document.getElementById("mensagem-sucesso");
-    if (msgSucesso) {
-      msgSucesso.textContent = "Pedido finalizado com sucesso!";
-      msgSucesso.style.display = "block";
-      setTimeout(() => {
-        msgSucesso.style.display = "none";
-      }, 3000);
-    }
   });
+
+  // Agora salvar no localStorage
+  const pedidosSalvos = JSON.parse(localStorage.getItem("pedidos") || "[]");
+  pedidosSalvos.push({
+    itens: pedidos,
+    data: new Date().toISOString(),
+  });
+  localStorage.setItem("pedidos", JSON.stringify(pedidosSalvos));
+
+  // Limpar carrinho
+  listaCarrinho.innerHTML = "";
+  carrinhoVazio.style.display = "block";
+  atualizarBotaoFinalizar();
+
+  const msgSucesso = document.getElementById("mensagem-sucesso");
+  if (msgSucesso) {
+    msgSucesso.textContent = "Pedido finalizado com sucesso!";
+    msgSucesso.style.display = "block";
+    setTimeout(() => {
+      msgSucesso.style.display = "none";
+    }, 3000);
+  }
+});
 
   // Exibir pizzas cadastradas no select pizza do pedido
   const selectPizza = document.getElementById("select-pizza-pizza");
