@@ -380,3 +380,15 @@ textarea.obs-produto:focus {
   border-color: #b54234;
   background-color: #fff3db;
 }
+
+#btn-finalizar-pedido {
+  font-family: 'Sansita Swashed', cursive;
+  background-color: #9F2C15;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
+  border-radius: 5px;
+}

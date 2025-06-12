@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function adicionarPizza() {
     const nome = document.getElementById("nome")?.value.trim();
-const preço = document.getElementById("preço")?.value.trim();
+    const preco = document.getElementById("preco")?.value.trim();
 
     const categoria = document.getElementById("categoria")?.value.trim();
 
@@ -217,71 +217,92 @@ const preço = document.getElementById("preço")?.value.trim();
   // Registro de vendas
   let vendas = [];
 
-  function registrarVenda() {
-    const nomePizza = document.getElementById("venda-nome")?.value.trim();
-    const preco = parseFloat(document.getElementById("venda-preco")?.value);
-    const comprador = document.getElementById("venda-comprador")?.value.trim();
+// Registrar venda feita pelo admin
+function registrarVenda() {
+  const nomePizza = document.getElementById("venda-nome")?.value.trim();
+  const preco = parseFloat(document.getElementById("venda-preco")?.value);
+  const comprador = document.getElementById("venda-comprador")?.value.trim();
 
-    if (nomePizza && !isNaN(preco) && comprador) {
-      const listaVendas = document.getElementById("lista-vendas");
-      const item = document.createElement("li");
-      item.textContent = `Pizza: ${nomePizza} - Preço: R$${preco.toFixed(2)} - Comprador: ${comprador}`;
-      listaVendas.appendChild(item);
+  if (nomePizza && !isNaN(preco) && comprador) {
+    const listaVendas = document.getElementById("lista-vendas");
+    const item = document.createElement("li");
+    item.textContent = `Pizza: ${nomePizza} - Preço: R$${preco.toFixed(2)} - Comprador: ${comprador}`;
+    listaVendas.appendChild(item);
 
-      vendas.push({ nomePizza, preco, comprador });
+    // Criar o objeto da venda
+    const novaVenda = {
+      nomePizza,
+      preco,
+      comprador,
+      data: new Date().toISOString()
+    };
 
-      document.getElementById("venda-nome").value = "";
-      document.getElementById("venda-preco").value = "";
-      document.getElementById("venda-comprador").value = "";
-    } else {
-      alert("Por favor, preencha todos os campos.");
-    }
+    // Pegar vendas existentes do localStorage
+    const vendasAdmin = JSON.parse(localStorage.getItem("vendasAdmin") || "[]");
+    vendasAdmin.push(novaVenda);
+    localStorage.setItem("vendasAdmin", JSON.stringify(vendasAdmin));
+
+    // Limpar campos
+    document.getElementById("venda-nome").value = "";
+    document.getElementById("venda-preco").value = "";
+    document.getElementById("venda-comprador").value = "";
+  } else {
+    alert("Por favor, preencha todos os campos.");
   }
-
-function carregarVendasDoLocalStorage() {
-  const pedidosSalvos = JSON.parse(localStorage.getItem('pedidos') || '[]');
-  const vendas = [];
-
-  pedidosSalvos.forEach(pedido => {
-    pedido.itens.forEach(itemTexto => {
-      vendas.push({
-        descricao: itemTexto,
-        preco: pedido.preco,
-        comprador: pedido.data // ou qualquer outro dado que queira mostrar
-      });
-    });
-  });
-
-  return vendas;
 }
 
+// Gera relatório unificando vendas de admin e clientes
 function gerarRelatorioVendas() {
   const tabelaRelatorio = document.getElementById("tabela-relatorio-vendas");
-  if (!tabelaRelatorio) return;
-
   tabelaRelatorio.innerHTML = "";
 
-  const pedidosSalvos = JSON.parse(localStorage.getItem('pedidos') || '[]');
+  const vendasAdmin = JSON.parse(localStorage.getItem("vendasAdmin") || "[]");
+  const pedidosClientes = JSON.parse(localStorage.getItem("pedidos") || "[]");
 
-  if (pedidosSalvos.length === 0) {
+  if (vendasAdmin.length === 0 && pedidosClientes.length === 0) {
     alert("Nenhuma venda registrada.");
     return;
   }
 
-  pedidosSalvos.forEach((pedido) => {
-    pedido.itens.forEach((item) => {
+  let total = 0;
+
+  // Vendas do admin
+  vendasAdmin.forEach(venda => {
+    const linha = document.createElement("tr");
+    linha.innerHTML = `
+      <td>${venda.nomePizza}</td>
+      <td>R$ ${parseFloat(venda.preco).toFixed(2)}</td>
+      <td>${venda.comprador}</td>
+      <td>${new Date(venda.data).toLocaleString()}</td>
+    `;
+    tabelaRelatorio.appendChild(linha);
+    total += venda.preco;
+  });
+
+  // Vendas dos clientes
+  pedidosClientes.forEach(pedido => {
+    pedido.itens.forEach(item => {
+      const precoTotal = item.precoUnitario * item.quantidade;
       const linha = document.createElement("tr");
-      const precoTotal = (item.precoUnitario * item.quantidade).toFixed(2).replace(".", ",");
       linha.innerHTML = `
         <td>${item.nomePizza}</td>
-        <td>${item.quantidade}</td>
-        <td>R$ ${precoTotal}</td>
-        <td>${item.observacao || ""}</td>
+        <td>R$ ${precoTotal.toFixed(2)}</td>
+        <td>Cliente</td>
         <td>${new Date(pedido.data).toLocaleString()}</td>
       `;
       tabelaRelatorio.appendChild(linha);
+      total += precoTotal;
     });
   });
+
+  // Linha do total
+  const linhaTotal = document.createElement("tr");
+  linhaTotal.innerHTML = `
+    <td><strong>Total</strong></td>
+    <td><strong>R$ ${total.toFixed(2)}</strong></td>
+    <td colspan="2"></td>
+  `;
+  tabelaRelatorio.appendChild(linhaTotal);
 
   document.getElementById("relatorio-vendas").classList.remove("hidden");
 }
@@ -355,32 +376,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-btnFinalizar?.addEventListener("click", () => {
+  // Finalizar pedido
+  btnFinalizar?.addEventListener("click", () => {
   if (!listaCarrinho || !carrinhoVazio) return;
 
   // Vamos criar uma lista estruturada dos pedidos
   const pedidos = [];
 
   listaCarrinho.querySelectorAll("li").forEach((li) => {
-    // li.innerHTML tem algo tipo: "<strong>NomePizza - Categoria</strong> x 2 <br><em>Obs: algo</em>"
     const strong = li.querySelector("strong");
     if (!strong) return;
 
-    // Extrair nome da pizza (antes do " - categoria")
-    const texto = strong.textContent; // ex: "Margherita - Tradicional"
+    const texto = strong.textContent;
     const nomePizza = texto.split(" - ")[0].trim();
 
-    // Quantidade (ex: "x 2")
     const matchQtd = li.textContent.match(/x (\d+)/);
     const quantidade = matchQtd ? parseInt(matchQtd[1]) : 1;
 
-    // Observação (se houver)
     const obsElem = li.querySelector("em");
     const observacao = obsElem ? obsElem.textContent.replace("Obs: ", "") : "";
 
-    // Buscar preço da pizza cadastrada no admin
+    // Buscar no array pizzaria (que deve estar carregado no início do JS)
     const pizzaCadastrada = pizzaria.find(p => p.nome === nomePizza);
-    const precoUnitario = pizzaCadastrada ? parseFloat(pizzaCadastrada.preço.replace(",", ".") || 0) : 0;
+    const precoUnitario = pizzaCadastrada?.preco
+      ? parseFloat(pizzaCadastrada.preco.toString().replace(",", "."))
+      : 0;
 
     pedidos.push({
       nomePizza,
@@ -390,11 +410,18 @@ btnFinalizar?.addEventListener("click", () => {
     });
   });
 
+  // Se não houver pedidos, não faz nada
+  if (pedidos.length === 0) return;
+  
+  // Calcular total
+  const precoTotal = pedidos.reduce((acc, item) => acc + item.precoUnitario * item.quantidade, 0);
+
   // Agora salvar no localStorage
   const pedidosSalvos = JSON.parse(localStorage.getItem("pedidos") || "[]");
   pedidosSalvos.push({
-    itens: pedidos,
     data: new Date().toISOString(),
+    preco: precoTotal,
+    itens: pedidos
   });
   localStorage.setItem("pedidos", JSON.stringify(pedidosSalvos));
 
@@ -403,6 +430,7 @@ btnFinalizar?.addEventListener("click", () => {
   carrinhoVazio.style.display = "block";
   atualizarBotaoFinalizar();
 
+  // Mostrar sucesso
   const msgSucesso = document.getElementById("mensagem-sucesso");
   if (msgSucesso) {
     msgSucesso.textContent = "Pedido finalizado com sucesso!";
@@ -413,17 +441,20 @@ btnFinalizar?.addEventListener("click", () => {
   }
 });
 
-  // Exibir pizzas cadastradas no select pizza do pedido
-  const selectPizza = document.getElementById("select-pizza-pizza");
-  if (selectPizza) {
-    selectPizza.innerHTML = '<option value="">Selecione uma pizza</option>';
-    pizzaria.forEach((pizza) => {
-      const option = document.createElement("option");
-      option.value = pizza.nome;
-      option.textContent = `${pizza.nome} - ${pizza.categoria}`;
-      selectPizza.appendChild(option);
-    });
-  }
+// Exibir pizzas cadastradas no select pizza do pedido
+const selectPizza = document.getElementById("select-pizza-pizza");
+if (selectPizza) {
+  selectPizza.innerHTML = '<option value="">Selecione uma pizza</option>';
+  pizzaria.forEach((pizza) => {
+    const option = document.createElement("option");
+    option.value = pizza.nome;
+
+    const precoFormatado = pizza.preco?.toString().replace(".", ",") || "0,00";
+    option.textContent = `${pizza.nome} - ${pizza.categoria} - R$ ${precoFormatado}`;
+
+    selectPizza.appendChild(option);
+  });
+}
 
   // Expõe funções globais para serem usadas nos botões no HTML
   window.adicionarPizza = adicionarPizza;
